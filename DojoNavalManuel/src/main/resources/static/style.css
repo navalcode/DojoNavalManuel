@@ -1,0 +1,227 @@
+* {
+    margin: 0;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: rgb(231,127,172);
+    background: linear-gradient(167deg, rgba(231,127,172,1) 0%, rgba(133,183,242,1) 100%);
+}
+
+body, html {
+    overflow-x: hidden;
+}
+
+.navbar {
+    background: #ffffff67;
+    backdrop-filter: blur( 8.0px);
+    height: 100px;
+}
+
+.lista-m {
+    background: #ffffff67;
+    backdrop-filter: blur( 8.0px);
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #1b1b1b;
+    font-size: 15pt;
+}
+
+a:hover {
+    color: #1b1b1b;
+}
+
+.nav-item{
+    text-shadow: #0000004d 0px 3px 6px;
+}
+
+
+.nav-item:hover {
+    background: #ffffff67;
+    backdrop-filter: blur( 8.0px);
+    text-shadow: #0000004d 0px 3px 6px;
+}
+
+
+.logo img {
+    width: 50px;
+    -webkit-filter:drop-shadow( #0000004d 0px 3px 6px);
+}
+
+button img {
+    width: 25px;
+}
+
+img {
+    width: 40px;
+}
+
+li a img {
+    margin-left: 10px;
+    margin-right: 50px;
+    -webkit-filter:drop-shadow( #0000004d 0px 3px 6px);
+}
+
+header {
+    margin-bottom: 10px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.id_admin {
+    size: 0.2em;
+    margin-top: -17px;
+    margin-bottom: -2px;
+    margin-left: 106px;
+}
+
+.reg-op {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #ffffff67;
+    backdrop-filter: blur( 8.0px);
+    box-shadow: #0000004d 0px 3px 6px;
+    text-shadow: #0000004d 0px 3px 6px;
+    border: 1px transparent;
+    border-radius: 10px;
+    width: 125px;
+    height: 40%;
+}
+.reg-op h6{
+    margin-top: 5px;
+}
+.reg-op:hover{
+    background: #5e5d5d67;
+    color: #f1f1f1;
+    
+}
+.reg-op img{
+    width: 15px;
+    opacity: 50%;
+    
+}
+
+main{
+    margin-top: 10px;
+}
+
+.card-body{
+    background: #ffffff33;
+    backdrop-filter: blur( 7.0px);
+    border: 1px solid #fcfcfc5d;
+    border-radius: 10px;
+    box-shadow: #0000002d 0px 3px 6px;
+}
+
+.botones{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.editar{
+    background: #ffffff67;
+    backdrop-filter: blur( 8.0px);
+    border: 1px solid #fcfcfc5d;
+    box-shadow: #0000004d 0px 3px 6px;
+    border-radius: 10px;
+    font-weight:600;
+    font-size: 1.5em;
+    color:#1165F5;
+}
+.editar:hover{
+    color:#1165F5;
+    background: #5e5d5d67;
+}
+.eliminar{
+    background: #ffffff67;
+    backdrop-filter: blur( 8.0px);
+    border: 1px solid #fcfcfc5d;
+    box-shadow: #0000004d 0px 3px 6px;
+    border-radius: 10px;
+    font-weight:600;
+    font-size: 1.5em;
+    color:#F50000;
+}
+.eliminar:hover{
+    background: #5e5d5d67;
+    color:#F50000;
+}
+
+.agregarFoto {
+    background: #ffffff67;
+    backdrop-filter: blur( 8.0px);
+    border: 1px solid #fcfcfc5d;
+    box-shadow: #0000004d 0px 3px 6px;
+    border-radius: 10px;
+    font-weight:600;
+    font-size: 0.7em;
+}
+.agregarFoto:hover{
+    background: #5e5d5d67;
+    color: #f1f1f1;
+}
+
+.agregarFoto img{
+    width: 15px;
+    opacity: 50%;
+}
+.fotoPerfil{
+    display: flex;
+    justify-content: space-between;
+}
+
+.pack-imagen{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imagen img{
+    width: 80px;
+    border-radius: 50%;
+    border: 1px solid #ffffff00;
+    overflow: hidden;
+    box-shadow: #0000004d 0px 3px 6px;
+}
+
+.fotoPerfil{
+    text-shadow: #0000004d 0px 3px 6px;
+}
+
+.main{
+    background: #ffffff27;
+    backdrop-filter: blur( 8.0px);
+    border: 1px solid #fcfcfc21;
+    box-shadow: #0000004d 0px 3px 6px;
+    border-radius: 10px;
+}
+.menuHamburguesa{
+    -webkit-filter:drop-shadow( #000000 1px 1px 2px);
+}
+.form-group input,.form-group textarea,.form-group select,.form-group option{
+    background-color: #ffffff15;
+    backdrop-filter: blur( 5.0px);
+    border: 1px solid #fcfcfc5d;
+    box-shadow: #0000001a 0px 3px 6px;
+    border-radius: 10px;
+}
+
+.encendido{
+ display: inherit;
+}
+.apagado{
+    display: none;
+}
+

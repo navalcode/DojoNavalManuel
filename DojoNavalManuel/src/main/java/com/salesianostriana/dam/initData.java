@@ -1,5 +1,7 @@
 package com.salesianostriana.dam;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.stereotype.Component;
 
 import com.salesianostriana.dam.modelo.Alumno;
@@ -14,7 +16,7 @@ public class initData {
 	private final AlumnoServicio alumnoServicio;
 	
 	
-	
+	@PostConstruct
 	public void init () {
 		Alumno a =new Alumno ("Manuel","Naval","correo");
 		Alumno b =new Alumno ("Manuel","Naval","correo");

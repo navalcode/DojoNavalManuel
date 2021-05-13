@@ -1,47 +1,596 @@
-<!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!--CSS propio-->
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <!--Iconos Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <!--Favicon-->
+    <link rel="shortcut icon" type="image/x-icon" href="img/black-belt.png">
 
-    <title>Alumnos</title>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-6">
-          <table class="table table-light">
-            <thead class="thead-light">
-              <tr>
-                <th>id</th>
-                <th>Nombre</th>
-                <th>Apellidos</th>
-                <th>Curso</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr th:each="alumno:${alumnos}">
-                
-                <td th:text="${alumno.nombre}">Luismi</td>
-                <td th:text="${alumno.apellidos}">De Triana</td>
-                <td th:text="${alumno.curso.nombre}">1º DAM</td>
-              </tr>
-            </tbody>
-          </table>
-    
+    <title>Inicio</title>
+</head>
+
+<body>
+
+    <header>
+        <!--Menú hamburguesa-->
+        <div class="menu">
+            <nav class="navbar navbar-dark ">
+                <div class="container-fluid">
+                    <button class="navbar-toggler float-left" type="button" data-toggle="collapse"
+                        data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon rounded menuHamburguesa"></span>
+                    </button>
+                    <div class="logo mx-auto col-6">
+                        <a href="#"><img src="img/sakura.svg" alt="Sakura"></a>
+                    </div>
+                    <div class=" float-right">
+                        <a href=""><img src="img/logout.png" alt="LogOut"></a>
+                    </div>
+                </div>
+            </nav>
         </div>
-      </div>
+        <div class="collapse col-12" id="navbarToggleExternalContent">
+            <div class="lista-m">
+                <ul class="navbar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href=""><img src="img/karate (1).png" alt="Administrador">
+                            J.Cesar</a>
+                        <p class="id_admin">cesarjul@gmail.com</p>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href=""><img src="img/judo (1).png" alt="Alumnos">Alumnos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href=""><img src="img/fight.png" alt="clases">Clases</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href=""><img src="img/black-belt.png" alt="exámenes">Exámenes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href=""><img src="img/mount-fuji.png" alt="excursiones">Excursiones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href=""><img src="img/setting.png" alt="configuración">Configuración</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <!--Menú hamburguesa fin-->
+    </header>
+    <!-- Jumbotrón-->
+    <div class="jumbotron-fluid col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto ">
+        <div class="container">
+            <div class="reg-op">
+                <h6 class="op">Alumnos</h6>
+            </div>
+            <div class="reg-op">
+                <h6 class="op">Agregar</h6>
+                <img src="img/down-arrow.png" alt="flecha-bajo">
+            </div>
+            <div class="reg-op">
+                <h6 class="op">Filtrar</h6>
+                <img src="img/down-arrow.png" alt="flecha-bajo">
+            </div>
+            <div class="reg-op">
+                <h6 class="op">Ordenar</h6>
+                <img src="img/down-arrow.png" alt="flecha-bajo">
+            </div>
+        </div>
+
     </div>
+    <!--Fin jumbotrón-->
+
+    <main class="container-fluid border rounded col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto main">
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
+        <div class="row">
+            <!--Modelo para representar un alumno-->
+            <div class="mx-auto col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11 mt-4 mb-4 " th:each="alumno:${alumnos}">
+
+                <div class="card-body w-100">
+                    <div class="fotoPerfil">
+                        <!--Resumen básico-->
+                        <div>
+                            <h5  class="card-title w-100" th:text="${alumno.nombre}"></h5>
+                            <p class="card-text w-100">15 años</p>
+                            <p class="card-text w-100">Cinturón: verde-azul</p>
+                        </div>
+                        <!--Imagen-->
+                        <div class="pack-imagen">
+                            <div class="imagen"><img src="img/usuario.png" alt="userprofile"></div>
+                            <form>
+                                <div class="form-group">
+                                    <label for="">Elegir fotografía</label>
+                                    <input type="file" class="form-control-file agregarFoto" id="">
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                    <!--Formulario-->
+
+                    <form class="encendido">
+                        <!--Nombre y apellidos-->
+                        <div class="row">
+                            <div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <label for="nombre">Nombre</label>
+                                <input type="text" class="form-control" placeholder="Nombre">
+                            </div>
+                            <div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <label for="Apellido1">Apellido 1</label>
+                                <input type="text" class="form-control" placeholder="Apellido1">
+                            </div>
+                            <div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <label for="Apellido2">Apellido 2</label>
+                                <input type="text" class="form-control" placeholder="Apellido2">
+                            </div>
+                        </div>
+                        <!--fila unica hasta fecha-->
+                        <div class="row ">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                                <!--Dni y teléfono-->
+                                <div class="row">
+                                    <div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                        <label for="fecha">DNI</label>
+                                        <input type="text" class="form-control" placeholder="DNI">
+                                    </div>
+                                    <div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                        <label for="fecha">Teléfono </label>
+                                        <input type="text" class="form-control" placeholder="Teléfono--">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+                                <!--Email y fecha de nacimiento-->
+                                <div class="row">
+                                    <div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-6 ">
+                                        <label for="fecha">Correo electrónico</label>
+                                        <input type="email" class="form-control" id="email"
+                                            placeholder="Correo electrónico">
+                                    </div>
+                                    <div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-6 ">
+                                        <label for="fecha"> Fecha de nacimiento</label>
+                                        <input type="date" class="form-control" id="fecha"
+                                            placeholder="Fecha de nacimiento">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row ">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                                <!--Curso y fecha Inscripción-->
+                                <div class="row">
+                                    <div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                        <label for="curso">Curso</label>
+                                        <select class="form-control" id="curso">
+                                            <option>Juveniles</option>
+                                            <option>Alevines</option>
+                                            <option>Adultos</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                        <label for="fechaIns"> Fecha de Inscripción</label>
+                                        <input type="date" class="form-control" id="fechaIns"
+                                            placeholder="Fecha de Inscripción">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+                                <!--Federado y Cinturón-->
+                                <div class="row">
+                                    <div class="form-group col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-auto">
+                                        <label for="federado">Federado</label>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="federado" id="federado"
+                                                value="1" checked>
+                                            <label class="form-check-label" for="federado">
+                                                Si
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="noFederado"
+                                                id="noFederado" value="0">
+                                            <label class="form-check-label" for="noFederado">
+                                                No
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-6 ">
+                                        <label for="exampleFormControlSelect1">Cinturón</label>
+                                        <select class="form-control" id="exampleFormControlSelect1">
+                                            <option>Blanco</option>
+                                            <option>Blanco-Amarillo</option>
+                                            <option>Amarillo</option>
+                                            <option>Amarillo-Naranja</option>
+                                            <option>Naranja</option>
+                                            <option>Naranja-Verde</option>
+                                            <option>Verde</option>
+                                            <option>Verde-Azul</option>
+                                            <option>Azul</option>
+                                            <option>Azul-Marrón</option>
+                                            <option>Marrón</option>
+                                            <option>Marrón-Negro</option>
+                                            <option>Negro 1 DAN</option>
+                                            <option>Negro 2 DAN</option>
+                                            <option>Negro 3 DAN</option>
+                                            <option>Negro 4 DAN</option>
+                                            <option>Negro 5 DAN</option>
+                                            <option>Blanco-Rojo 6 DAN</option>
+                                            <option>Blanco-Rojo 7 DAN</option>
+                                            <option>Blanco-Rojo 8 DAN</option>
+                                            <option>Rojo 9 DAN</option>
+                                            <option>Rojo 10 DAN</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Dirección-->
+                        <div class="row">
+                            <div class="col-12 ">
+
+                                <div class="row">
+                                    <div class="form-group col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2">
+                                        <label for="provincia">Provincia</label>
+                                        <select required name="provincia" class="form-control">
+                                            <option value="">Elige Provincia</option>
+                                            <option value="Álava/Araba">Álava/Araba</option>
+                                            <option value="Albacete">Albacete</option>
+                                            <option value="Alicante">Alicante</option>
+                                            <option value="Almería">Almería</option>
+                                            <option value="Asturias">Asturias</option>
+                                            <option value="Ávila">Ávila</option>
+                                            <option value="Badajoz">Badajoz</option>
+                                            <option value="Baleares">Baleares</option>
+                                            <option value="Barcelona">Barcelona</option>
+                                            <option value="Burgos">Burgos</option>
+                                            <option value="Cáceres">Cáceres</option>
+                                            <option value="Cádiz">Cádiz</option>
+                                            <option value="Cantabria">Cantabria</option>
+                                            <option value="Castellón">Castellón</option>
+                                            <option value="Ceuta">Ceuta</option>
+                                            <option value="Ciudad Real">Ciudad Real</option>
+                                            <option value="Córdoba">Córdoba</option>
+                                            <option value="Cuenca">Cuenca</option>
+                                            <option value="Gerona/Girona">Gerona/Girona</option>
+                                            <option value="Granada">Granada</option>
+                                            <option value="Guadalajara">Guadalajara</option>
+                                            <option value="Guipúzcoa/Gipuzkoa">Guipúzcoa/Gipuzkoa</option>
+                                            <option value="Huelva">Huelva</option>
+                                            <option value="Huesca">Huesca</option>
+                                            <option value="Jaén">Jaén</option>
+                                            <option value="La Coruña/A Coruña">La Coruña/A Coruña</option>
+                                            <option value="La Rioja">La Rioja</option>
+                                            <option value="Las Palmas">Las Palmas</option>
+                                            <option value="León">León</option>
+                                            <option value="Lérida/Lleida">Lérida/Lleida</option>
+                                            <option value="Lugo">Lugo</option>
+                                            <option value="Madrid">Madrid</option>
+                                            <option value="Málaga">Málaga</option>
+                                            <option value="Melilla">Melilla</option>
+                                            <option value="Murcia">Murcia</option>
+                                            <option value="Navarra">Navarra</option>
+                                            <option value="Orense/Ourense">Orense/Ourense</option>
+                                            <option value="Palencia">Palencia</option>
+                                            <option value="Pontevedra">Pontevedra</option>
+                                            <option value="Salamanca">Salamanca</option>
+                                            <option value="Segovia">Segovia</option>
+                                            <option value="Sevilla">Sevilla</option>
+                                            <option value="Soria">Soria</option>
+                                            <option value="Tarragona">Tarragona</option>
+                                            <option value="Tenerife">Tenerife</option>
+                                            <option value="Teruel">Teruel</option>
+                                            <option value="Toledo">Toledo</option>
+                                            <option value="Valencia">Valencia</option>
+                                            <option value="Valladolid">Valladolid</option>
+                                            <option value="Vizcaya/Bizkaia">Vizcaya/Bizkaia</option>
+                                            <option value="Zamora">Zamora</option>
+                                            <option value="Zaragoza">Zaragoza</option>
+                                          </select>
+
+                                    </div>
+                                    <div class="form-group col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2">
+                                        <label for="nombre">Código Postal</label>
+                                        <input type="text" class="form-control" placeholder="CP">
+                                    </div>
+                                    <div class="form-group col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2">
+                                        <label for="nombre">Municipio</label>
+                                        <input type="text" class="form-control" placeholder="Municipio">
+                                    </div>
+                                    <div class="form-group col-12 col-sm-12 col-md-3 col-lg-6 col-xl-6">
+                                        <label for="nombre">Dirección</label>
+                                        <input type="text" class="form-control" placeholder="Dirección">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Comentarios-->
+                        <div class="form-group">
+                            <label for="comentarios">Comentarios</label>
+                            <textarea class="form-control" id="comentarios" rows="3"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
+
+
+
+                    <!--Botones edición y eliminar-->
+                    <div class="botones">
+                        <button type="button" class="editar btn">Editar</button>
+                        <button type="button" class="eliminar btn">Eliminar</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="mx-auto col-11 col-sm-11 col-md-6 col-lg-5 col-xl-3 mt-4 mb-4 ">
+
+                <div class="card-body w-100">
+                    <div class="fotoPerfil">
+                        <div>
+                            <h5 class="card-title w-100">Juanjo Velasco</h5>
+                            <p class="card-text w-100">15 años</p>
+                            <p class="card-text w-100">Cinturón: verde-azul</p>
+                        </div>
+
+                        <div class="pack-imagen">
+                            <div class="imagen"><img src="img/usuario.png" alt="userprofile"></div>
+                            <div class="botones"> <button type="button" class="agregarFoto btn"> Elegir fotografía <img
+                                        src="img/down-arrow.png" alt="flecha-bajo"></button></div>
+                        </div>
+
+                    </div>
+                    <div class="botones">
+                        <button type="button" class="editar btn">Editar</button>
+                        <button type="button" class="eliminar btn">Eliminar</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="mx-auto col-11 col-sm-11 col-md-6 col-lg-5 col-xl-3 mt-4 mb-4 ">
+
+                <div class="card-body w-100">
+                    <div class="fotoPerfil">
+                        <div>
+                            <h5 class="card-title w-100">Juanjo Velasco</h5>
+                            <p class="card-text w-100">15 años</p>
+                            <p class="card-text w-100">Cinturón: verde-azul</p>
+                        </div>
+
+                        <div class="pack-imagen">
+                            <div class="imagen"><img src="img/usuario.png" alt="userprofile"></div>
+                            <div class="botones"> <button type="button" class="agregarFoto btn"> Elegir fotografía <img
+                                        src="img/down-arrow.png" alt="flecha-bajo"></button></div>
+                        </div>
+
+                    </div>
+                    <div class="botones">
+                        <button type="button" class="editar btn">Editar</button>
+                        <button type="button" class="eliminar btn">Eliminar</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="mx-auto col-11 col-sm-11 col-md-6 col-lg-5 col-xl-3 mt-4 mb-4 ">
+
+                <div class="card-body w-100">
+                    <div class="fotoPerfil">
+                        <div>
+                            <h5 class="card-title w-100">Juanjo Velasco</h5>
+                            <p class="card-text w-100">15 años</p>
+                            <p class="card-text w-100">Cinturón: verde-azul</p>
+                        </div>
+
+                        <div class="pack-imagen">
+                            <div class="imagen"><img src="img/usuario.png" alt="userprofile"></div>
+                            <div class="botones"> <button type="button" class="agregarFoto btn"> Elegir fotografía <img
+                                        src="img/down-arrow.png" alt="flecha-bajo"></button></div>
+                        </div>
+
+                    </div>
+                    <div class="botones">
+                        <button type="button" class="editar btn">Editar</button>
+                        <button type="button" class="eliminar btn">Eliminar</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="mx-auto col-11 col-sm-11 col-md-6 col-lg-5 col-xl-3 mt-4 mb-4 ">
+
+                <div class="card-body w-100">
+                    <div class="fotoPerfil">
+                        <div>
+                            <h5 class="card-title w-100">Juanjo Velasco</h5>
+                            <p class="card-text w-100">15 años</p>
+                            <p class="card-text w-100">Cinturón: verde-azul</p>
+                        </div>
+
+                        <div class="pack-imagen">
+                            <div class="imagen"><img src="img/usuario.png" alt="userprofile"></div>
+                            <div class="botones"> <button type="button" class="agregarFoto btn"> Elegir fotografía <img
+                                        src="img/down-arrow.png" alt="flecha-bajo"></button></div>
+                        </div>
+
+                    </div>
+                    <div class="botones">
+                        <button type="button" class="editar btn">Editar</button>
+                        <button type="button" class="eliminar btn">Eliminar</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="mx-auto col-11 col-sm-11 col-md-6 col-lg-5 col-xl-3 mt-4 mb-4 ">
+
+                <div class="card-body w-100">
+                    <div class="fotoPerfil">
+                        <div>
+                            <h5 class="card-title w-100">Juanjo Velasco</h5>
+                            <p class="card-text w-100">15 años</p>
+                            <p class="card-text w-100">Cinturón: verde-azul</p>
+                        </div>
+
+                        <div class="pack-imagen">
+                            <div class="imagen"><img src="img/usuario.png" alt="userprofile"></div>
+                            <div class="botones"> <button type="button" class="agregarFoto btn"> Elegir fotografía <img
+                                        src="img/down-arrow.png" alt="flecha-bajo"></button></div>
+                        </div>
+
+                    </div>
+                    <div class="botones">
+                        <button type="button" class="editar btn">Editar</button>
+                        <button type="button" class="eliminar btn">Eliminar</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="mx-auto col-11 col-sm-11 col-md-6 col-lg-5 col-xl-3 mt-4 mb-4 ">
+
+                <div class="card-body w-100">
+                    <div class="fotoPerfil">
+                        <div>
+                            <h5 class="card-title w-100">Juanjo Velasco</h5>
+                            <p class="card-text w-100">15 años</p>
+                            <p class="card-text w-100">Cinturón: verde-azul</p>
+                        </div>
+
+                        <div class="pack-imagen">
+                            <div class="imagen"><img src="img/usuario.png" alt="userprofile"></div>
+                            <div class="botones"> <button type="button" class="agregarFoto btn"> Elegir fotografía <img
+                                        src="img/down-arrow.png" alt="flecha-bajo"></button></div>
+                        </div>
+
+                    </div>
+                    <div class="botones">
+                        <button type="button" class="editar btn">Editar</button>
+                        <button type="button" class="eliminar btn">Eliminar</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="mx-auto col-11 col-sm-11 col-md-6 col-lg-5 col-xl-3 mt-4 mb-4 ">
+
+                <div class="card-body w-100">
+                    <div class="fotoPerfil">
+                        <div>
+                            <h5 class="card-title w-100">Juanjo Velasco</h5>
+                            <p class="card-text w-100">15 años</p>
+                            <p class="card-text w-100">Cinturón: verde-azul</p>
+                        </div>
+
+                        <div class="pack-imagen">
+                            <div class="imagen"><img src="img/usuario.png" alt="userprofile"></div>
+                            <div class="botones"> <button type="button" class="agregarFoto btn"> Elegir fotografía <img
+                                        src="img/down-arrow.png" alt="flecha-bajo"></button></div>
+                        </div>
+
+                    </div>
+                    <div class="botones">
+                        <button type="button" class="editar btn">Editar</button>
+                        <button type="button" class="eliminar btn">Eliminar</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="mx-auto col-11 col-sm-11 col-md-6 col-lg-5 col-xl-3 mt-4 mb-4 ">
+
+                <div class="card-body w-100">
+                    <div class="fotoPerfil">
+                        <div>
+                            <h5 class="card-title w-100">Juanjo Velasco</h5>
+                            <p class="card-text w-100">15 años</p>
+                            <p class="card-text w-100">Cinturón: verde-azul</p>
+                        </div>
+
+                        <div class="pack-imagen">
+                            <div class="imagen"><img src="img/usuario.png" alt="userprofile"></div>
+                            <div class="botones"> <button type="button" class="agregarFoto btn"> Elegir fotografía <img
+                                        src="img/down-arrow.png" alt="flecha-bajo"></button></div>
+                        </div>
+
+                    </div>
+                    <div class="botones">
+                        <button type="button" class="editar btn">Editar</button>
+                        <button type="button" class="eliminar btn">Eliminar</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="mx-auto col-11 col-sm-11 col-md-6 col-lg-5 col-xl-3 mt-4 mb-4 ">
+
+                <div class="card-body w-100">
+                    <div class="fotoPerfil">
+                        <div>
+                            <h5 class="card-title w-100">Juanjo Velasco</h5>
+                            <p class="card-text w-100">15 años</p>
+                            <p class="card-text w-100">Cinturón: verde-azul</p>
+                        </div>
+
+                        <div class="pack-imagen">
+                            <div class="imagen"><img src="img/usuario.png" alt="userprofile"></div>
+                            <div class="botones"> <button type="button" class="agregarFoto btn"> Elegir fotografía <img
+                                        src="img/down-arrow.png" alt="flecha-bajo"></button></div>
+                        </div>
+
+                    </div>
+                    <div class="botones">
+                        <button type="button" class="editar btn">Editar</button>
+                        <button type="button" class="eliminar btn">Eliminar</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="mx-auto col-11 col-sm-11 col-md-6 col-lg-5 col-xl-3 mt-4 mb-4 ">
+
+                <div class="card-body w-100">
+                    <div class="fotoPerfil">
+                        <div>
+                            <h5 class="card-title w-100">Juanjo Velasco</h5>
+                            <p class="card-text w-100">15 años</p>
+                            <p class="card-text w-100">Cinturón: verde-azul</p>
+                        </div>
+
+                        <div class="pack-imagen">
+                            <div class="imagen"><img src="img/usuario.png" alt="userprofile"></div>
+                            <div class="botones"> <button type="button" class="agregarFoto btn"> Elegir fotografía <img
+                                        src="img/down-arrow.png" alt="flecha-bajo"></button></div>
+                        </div>
+
+                    </div>
+                    <div class="botones">
+                        <button type="button" class="editar btn">Editar</button>
+                        <button type="button" class="eliminar btn">Eliminar</button>
+                    </div>
+                </div>
+
+            </div>
+    </main>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+        <script></script>
+</body>
+
 </html>
