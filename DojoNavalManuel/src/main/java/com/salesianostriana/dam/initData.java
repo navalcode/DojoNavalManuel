@@ -17,7 +17,9 @@ public class initData {
 	
 	public void init () {
 		Alumno a =new Alumno ("Manuel","Naval","correo");
-		
+		Alumno b =new Alumno ("Manuel","Naval","correo");
 		alumnoServicio.save(a);
+		alumnoServicio.save(b);
+		
 	}
 }
