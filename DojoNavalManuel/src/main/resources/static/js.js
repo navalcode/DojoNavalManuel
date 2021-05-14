@@ -1,15 +1,18 @@
-let evento=document.getElementById("abrirFormulario").addEventListener("click", function() {
+let botones=document.querySelectorAll(".editar");
+
+for (let boton of botones){
+	boton.addEventListener("click", mostrarCampos);
+} 
+
 	
   	
-	
-	});
-	
 
-function mostrarCampos() {
+
+function mostrarCampos(evento) {
 	//el boton es evento.target. El formulario es evento.target.previousElementSibling
 	
 	
-    let element = document.getElementById("");
+    let element = evento.target.previousElementSibling;
   
   
           element.classList.toggle('apagado');
