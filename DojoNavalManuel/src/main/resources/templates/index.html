@@ -123,20 +123,20 @@
                     </div>
                     <!--Formulario-->
 
-                    <form class="encendido">
+                    <form class="apagado" id="formulario">
                         <!--Nombre y apellidos-->
                         <div class="row">
                             <div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                 <label for="nombre" >Nombre</label>
-                                <input  type="text" class="form-control" placeholder="Nombre">
+                                <input  type="text" class="form-control" placeholder="Nombre" th:value="${alumno.nombre}">
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                 <label for="Apellido1">Apellido 1</label>
-                                <input type="text" class="form-control" placeholder="Apellido1">
+                                <input type="text" class="form-control" placeholder="Apellido1" th:value="${alumno.apellido1}">
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                 <label for="Apellido2">Apellido 2</label>
-                                <input type="text" class="form-control" placeholder="Apellido2">
+                                <input type="text" class="form-control" placeholder="Apellido2" th:value="${alumno.apellido2}">
                             </div>
                         </div>
                         <!--fila unica hasta fecha-->
@@ -150,7 +150,7 @@
                                     </div>
                                     <div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                                         <label for="fecha">Teléfono </label>
-                                        <input type="text" class="form-control" placeholder="Teléfono--">
+                                        <input type="text" class="form-control" placeholder="Teléfono" th:value="${alumno.telefono}">
                                     </div>
                                 </div>
                             </div>
@@ -334,7 +334,7 @@
 
                     <!--Botones edición y eliminar-->
                     <div class="botones">
-                        <button type="button" class="editar btn">Editar</button>
+                        <button type="button" class="editar btn" id="abrirFormulario">Editar</button>
                         <button type="button" class="eliminar btn">Eliminar</button>
                     </div>
                 </div>
@@ -351,7 +351,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
         crossorigin="anonymous"></script>
-        <script></script>
+        <script src="js.js"></script>
 </body>
 
 </html>
