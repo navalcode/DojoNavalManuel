@@ -18,10 +18,15 @@ public class initData {
 	
 	@PostConstruct
 	public void init () {
-		Alumno a =new Alumno ("Manuel","Naval","correo");
-		Alumno b =new Alumno ("Manuel","Naval","correo");
+		Alumno a =new Alumno ("Manuel","Naval","Rodríguez", null, null, null, null, 0, null, null, 0, null, false, null, null);
+		Alumno b =new Alumno ("Sergio","Perez","Peinado", null, null, null, null, 0, null, null, 0, null, false, null, null);
+		Alumno c =new Alumno ("Sara","Clarke","Menos", null, null, null, null, 0, null, null, 0, null, false, null, null);
+		Alumno d =new Alumno ("Cristina","Stromae","Ucchi", null, null, null, null, 0, null, null, 0, null, false, null, null);
+		
 		alumnoServicio.save(a);
 		alumnoServicio.save(b);
+		alumnoServicio.save(c);
+		alumnoServicio.save(d);
 		
 	}
 }
