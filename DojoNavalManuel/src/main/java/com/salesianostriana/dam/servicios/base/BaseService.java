@@ -1,38 +1,76 @@
 package com.salesianostriana.dam.servicios.base;
 
 import java.util.List;
-import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public abstract class BaseService<T, ID, R extends JpaRepository<T,ID>> {
-	
-	@Autowired
-	protected R repository;
-	
-	public T save(T t) {
-		return repository.save(t);
-	}
-	
-	public T edit(T t) {
-		return save(t);
-	}
-	
-	public void delete(T t) {
-		repository.delete(t);
-	}
-	
-	public void deleteById(ID id) {
-		repository.deleteById(id);
-	}
-	
-	public List<T> findAll() {
-		return repository.findAll();
-	}
-	
-	public Optional<T> findById(ID id) {
-		return repository.findById(id);
-	}
+public abstract class BaseService<T, ID, R extends JpaRepository<T, ID>> implements IBaseService<T, ID> {
 
+	
+	protected R repositorio;
+	
+	
+	public BaseService(R repo) {
+		this.repositorio = repo;
+	}
+	
+	/**
+	 * Almacenamos una nueva entidad a través del repositorio
+	 * @param t
+	 * @return 
+	 */
+	@Override
+	public T save(T t) {
+		return repositorio.save(t);
+	}
+	
+	/**
+	 * Localizamos una entidad en base a su Id
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@Override
+	public T findById(ID id) {
+		return repositorio.findById(id).orElse(null);
+	}
+	
+	/**
+	 * Obtenemos todas las entidades de un tipo de entidad
+	 * @return
+	 */
+	@Override
+	public List<T> findAll() {
+		return repositorio.findAll();
+	}
+	
+	/**
+	 * Editamos una instancia de una entidad (si no tiene Id, la insertamos).
+	 * @param t
+	 * @return
+	 */
+	@Override
+	public T edit(T t) {
+		return repositorio.save(t);
+	}
+	
+	/**
+	 * Eliminamos una instancia de una entidad
+	 * @param t
+	 */
+	@Override
+	public void delete(T t) {
+		repositorio.delete(t);
+	}
+	
+	/**
+	 * Eliminamos una instancia en base a su ID
+	 * @param id
+	 */
+	@Override
+	public void deleteById(ID id) {
+		repositorio.deleteById(id);
+	}
+	
+	
 }

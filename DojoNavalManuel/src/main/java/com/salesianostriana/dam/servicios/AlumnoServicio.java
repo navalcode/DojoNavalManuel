@@ -9,6 +9,11 @@ import com.salesianostriana.dam.servicios.base.BaseService;
 @Service
 public class AlumnoServicio extends BaseService<Alumno, Long, AlumnoRepository>{
 
+	public AlumnoServicio(AlumnoRepository repo) {
+		super(repo);
+		// TODO Auto-generated constructor stub
+	}
+
 	
 
 	

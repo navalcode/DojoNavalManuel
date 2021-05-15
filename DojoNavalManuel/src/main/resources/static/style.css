@@ -4,9 +4,6 @@
     box-sizing: border-box;
 }
 
-.row [class*='col-'] {
-    transition: all 0.5s ease-in-out;
-}
 
 body {
     width: 100%;

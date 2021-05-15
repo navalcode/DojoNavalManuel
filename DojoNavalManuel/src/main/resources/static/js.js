@@ -41,5 +41,6 @@ function mostrarCampos(evento) {
 		//También eliminamos el id del ancla para evitar duplicados.
 		tarjetaAlumno.id = "";
 		boton.innerHTML="Editar"
+		location.href = "";
 	}
 }
