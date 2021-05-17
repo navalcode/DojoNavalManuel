@@ -18,10 +18,10 @@ public class Sensei extends Persona {
 
 	private String curso;
 	private double sueldo;
-	public Sensei(String nombre, String apellido1, String apellido2, String email, String telefono,
+	public Sensei(String nombre, String apellido1, String apellido2, String email,String dni, String telefono,
 			LocalDate fechaNacimiento, String provincia, int codigoPostal, String municipio, String direccion,
 			String curso, double sueldo) {
-		super(nombre, apellido1, apellido2, email, telefono, fechaNacimiento, provincia, codigoPostal, municipio,
+		super(nombre, apellido1, apellido2, email,dni, telefono, fechaNacimiento, provincia, codigoPostal, municipio,
 				direccion);
 		this.curso = curso;
 		this.sueldo = sueldo;

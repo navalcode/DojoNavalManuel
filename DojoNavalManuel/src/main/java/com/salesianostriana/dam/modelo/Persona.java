@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -22,7 +24,9 @@ public class Persona {
 	private String apellido1;
 	private String apellido2;
 	private String email;
+	private String dni;
 	private String telefono;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaNacimiento;
 	private String provincia;
 	private int codigoPostal;
@@ -30,13 +34,14 @@ public class Persona {
 	private String direccion;
 	
 	
-	public Persona(String nombre, String apellido1, String apellido2, String email, String telefono,
+	public Persona(String nombre, String apellido1, String apellido2, String email,String dni, String telefono,
 			LocalDate fechaNacimiento, String provincia, int codigoPostal, String municipio, String direccion) {
 		super();
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
 		this.email = email;
+		this.dni =dni;
 		this.telefono = telefono;
 		this.fechaNacimiento = fechaNacimiento;
 		this.provincia = provincia;
