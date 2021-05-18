@@ -75,7 +75,7 @@
 	<div class="jumbotron-fluid col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto ">
 
 		<div class="botones">
-			<button type="button" class="reg-op btn" id="abrirFormulario">Agregar</button>
+			 <a class="button reg-op btn" href="#" th:href="@{/nuevo}">Agregar</a>
 			<button type="button" class="reg-op btn">Filtrar</button>
 			<button type="button" class="reg-op btn">ordenar</button>
 		</div>
@@ -91,6 +91,21 @@
 			<div class="mx-auto col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11 mt-4 mb-4">
 
 				<div class="card-body w-100">
+				   <div class="fotoPerfil">
+                        <!--Resumen básico-->
+                        <div>
+                            
+                        </div>
+                        <!--Imagen-->
+                        <div class="pack-imagen">
+                            <!--Imagen-->
+                        <div class="pack-imagen">
+                            <div class="imagen"><img src="img/usuario.png"
+										th:src="${#strings.isEmpty(alumno.imagen)} ? 'img/usuario.png' : ${alumno.imagen}"
+										class="img-responsive" alt="userprofile" /> </div>
+                        </div>
+                        </div>
+                    </div>
 
 					<!--Formulario-->
 
@@ -229,8 +244,9 @@
 
 						<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
 							<label for="nombre">Imagen</label>
-							<input type="text" class="form-control" placeholder="Inserte aquí la url a su imagen..."
-								th:value="${alumno.imagen}">
+							<input type="url" class="form-control" placeholder="Inserte aquí la url a su imagen (Ratio 1x1)"
+								th:field="${alumno.imagen}">
+						
 						</div>
 
 						<!--Comentarios-->

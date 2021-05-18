@@ -98,7 +98,9 @@
                         </div>
                         <!--Imagen-->
                         <div class="pack-imagen">
-                            <div class="imagen"><img src="img/usuario.png" alt="userprofile"></div>
+                            <div class="imagen"><img src="img/usuario.png"
+										th:src="${#strings.isEmpty(alumno.imagen)} ? 'img/usuario.png' : ${alumno.imagen}"
+										class="img-responsive" alt="userprofile" /> </div>
                         </div>
                     </div>
 
