@@ -24,7 +24,7 @@ public class Alumno extends Persona {
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaInscripcion;
-	private boolean federado;
+	private String federado;
 	private String cinturon;
 	private String comentarios;
 
@@ -33,7 +33,7 @@ public class Alumno extends Persona {
 
 	public Alumno(String nombre, String apellido1, String apellido2, String email, String dni, String telefono,
 			LocalDate fechaNacimiento, String provincia, int codigoPostal, String municipio, String direccion,
-			String imagen, LocalDate fechaInscripcion, boolean federado, String cinturon, String comentarios) {
+			String imagen, LocalDate fechaInscripcion, String federado, String cinturon, String comentarios) {
 		super(nombre, apellido1, apellido2, email, dni, telefono, fechaNacimiento, provincia, codigoPostal, municipio,
 				direccion, imagen);
 		this.fechaInscripcion = fechaInscripcion;
@@ -44,7 +44,7 @@ public class Alumno extends Persona {
 
 	public Alumno(String nombre, String apellido1, String apellido2, String email, String dni, String telefono,
 			LocalDate fechaNacimiento, String provincia, int codigoPostal, String municipio, String direccion,
-			String imagen, LocalDate fechaInscripcion, boolean federado, String cinturon, String comentarios,
+			String imagen, LocalDate fechaInscripcion, String federado, String cinturon, String comentarios,
 			Curso curso) {
 		super(nombre, apellido1, apellido2, email, dni, telefono, fechaNacimiento, provincia, codigoPostal, municipio,
 				direccion, imagen);

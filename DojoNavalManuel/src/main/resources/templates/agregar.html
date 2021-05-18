@@ -151,8 +151,9 @@
 									<div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
 										<label for="curso">Curso</label>
 										<select class="form-control" id="curso" th:field="*{curso}">
-										<option value="-1">---</option>
-										<option th:each="curso : ${lista_cursos}" th:value="${curso.id}" th:text="${curso.nombre}">Curso</option>
+											<option value="-1">---</option>
+											<option th:each="curso : ${lista_cursos}" th:value="${curso.id}"
+												th:text="${curso.nombre}">Curso</option>
 										</select>
 									</div>
 									<div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
@@ -167,32 +168,25 @@
 								<div class="row">
 									<!-- RadioButton Federado -->
 									<div class="form-group col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-auto">
-										<label for="federado">Federado</label>
 
-										<div class="form-check">
-											<input class="form-check-input" type="radio" name="federado" id="federado"
-												value="true" checked>
-											<label class="form-check-label" for="federado">
-												Si
-											</label>
-										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="radio" name="federado" id="federado"
-												value="false">
-											<label class="form-check-label" for="federado">
-												No
-											</label>
-										</div>
+										<label for="federados">Federado</label>
+
+										<select class="form-control" id="federado" th:field="*{federado}">
+											<option value="">---</option>
+											<option th:each="federado : ${lista_federados}" th:value="${federado}"
+												th:text="${federado}">Federado </option>
+										</select>
 									</div>
 
 									<!--Cinturones -->
 									<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-6 ">
-										<label for="cinturones">Cinturón</label>
-										<select class="form-control" id="cinturones" th:field="*{cinturon}">
-										<option value="">---</option>
-										<option th:each="cinturon : ${lista_cinturones}" th:value="${cinturon}" th:text="${cinturon}">Cinturón </option>
-										</select>
 
+										<label for="cinturones">Cinturón</label>
+
+										<select class="form-control" id="cinturones" th:field="*{cinturon}">
+											<option value="">---</option>
+											<option th:each="cinturon : ${lista_cinturones}" th:value="${cinturon}"
+												th:text="${cinturon}">Cinturón </option>
 										</select>
 
 									</div>
@@ -207,9 +201,10 @@
 									<!-- Provincias -->
 									<div class="form-group col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2">
 										<label for="provincia">Provincia</label>
-										<select required name="provincia" class="form-control" th:field="*{provincia}" >
-										<option value="">---</option>
-										<option th:each="provincia : ${lista_provincias}" th:value="${provincia}" th:text="${provincia}">Provincia</option>
+										<select required name="provincia" class="form-control" th:field="*{provincia}">
+											<option value="">---</option>
+											<option th:each="provincia : ${lista_provincias}" th:value="${provincia}"
+												th:text="${provincia}">Provincia</option>
 										</select>
 
 									</div>

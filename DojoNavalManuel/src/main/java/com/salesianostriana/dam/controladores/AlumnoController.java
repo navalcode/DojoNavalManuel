@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.salesianostriana.dam.modelo.Alumno;
 import com.salesianostriana.dam.modelo.Curso;
 import com.salesianostriana.dam.modelo.DatosCinturones;
+import com.salesianostriana.dam.modelo.DatosFederados;
 import com.salesianostriana.dam.modelo.DatosProvincias;
 import com.salesianostriana.dam.servicios.AlumnoServicio;
 import com.salesianostriana.dam.servicios.CursoServicio;
@@ -59,4 +60,10 @@ public class AlumnoController {
 	public List<String> tiposProvincias(){
 		return DatosProvincias.lista_provincias();
 		}
+	
+	@ModelAttribute("lista_federados")
+	public List<String> tiposFederados(){
+		return DatosFederados.lista_federados();
+		}
+	
 }
