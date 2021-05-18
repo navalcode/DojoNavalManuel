@@ -19,7 +19,7 @@ public class Persona {
 	@Id
 	@GeneratedValue
 	private long id;
-	
+
 	private String nombre;
 	private String apellido1;
 	private String apellido2;
@@ -32,23 +32,24 @@ public class Persona {
 	private int codigoPostal;
 	private String municipio;
 	private String direccion;
-	
-	
-	public Persona(String nombre, String apellido1, String apellido2, String email,String dni, String telefono,
-			LocalDate fechaNacimiento, String provincia, int codigoPostal, String municipio, String direccion) {
+	private String imagen;
+
+	public Persona(String nombre, String apellido1, String apellido2, String email, String dni, String telefono,
+			LocalDate fechaNacimiento, String provincia, int codigoPostal, String municipio, String direccion,
+			String imagen) {
 		super();
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
 		this.email = email;
-		this.dni =dni;
+		this.dni = dni;
 		this.telefono = telefono;
 		this.fechaNacimiento = fechaNacimiento;
 		this.provincia = provincia;
 		this.codigoPostal = codigoPostal;
 		this.municipio = municipio;
 		this.direccion = direccion;
+		this.imagen = imagen;
 	}
-	
-	
+
 }

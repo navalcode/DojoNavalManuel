@@ -8,8 +8,9 @@
 body {
     width: 100%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: rgb(231,127,172);
-    background: linear-gradient(167deg, rgba(231,127,172,1) 0%, rgba(133,183,242,1) 100%);
+    background-image: url(img/fondoDegradado.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 body, html {

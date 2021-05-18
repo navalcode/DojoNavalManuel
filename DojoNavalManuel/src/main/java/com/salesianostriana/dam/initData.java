@@ -45,8 +45,14 @@ public class initData {
 		alumnoServicio.save(g);
 		alumnoServicio.save(h);
 		
+		Curso nuevoA =new Curso (2021,"Juveniles",25.00);
+		Curso nuevoB =new Curso (2021,"Alevines",25.00);
 		Curso nuevoC =new Curso(2021, "Adultos", 30.00);
+		
+		cursoServicio.save(nuevoA);
+		cursoServicio.save(nuevoB);
 		cursoServicio.save(nuevoC);
+		
 		
 		nuevoC.addAlumno(a);
 		alumnoServicio.edit(a);
