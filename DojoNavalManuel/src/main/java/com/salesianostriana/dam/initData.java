@@ -56,7 +56,7 @@ public class initData {
 		cursoServicio.save(nuevoB);
 		cursoServicio.save(nuevoC);
 		
-		Sensei sa =new Sensei("Jose María", null, null, null, null, null, null, null, 0, null, null, null, 0);
+		Sensei sa =new Sensei("Jose María", null, null, null, null, null, null, null, 0, null, null, null, 1150.00);
 		
 		senseiServicio.save(sa);
 		

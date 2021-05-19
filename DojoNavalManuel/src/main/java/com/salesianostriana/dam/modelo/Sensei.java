@@ -20,7 +20,8 @@ import lombok.ToString;
 public class Sensei extends Persona {
 
 
-
+	@EqualsAndHashCode.Exclude
+	@ToString.Exclude
     @OneToOne(mappedBy = "sensei", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Curso curso;
 	

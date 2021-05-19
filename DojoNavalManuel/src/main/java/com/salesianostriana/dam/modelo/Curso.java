@@ -32,6 +32,8 @@ public class Curso {
 	private String nombre;
 	private double precio;
 	
+	@EqualsAndHashCode.Exclude
+	@ToString.Exclude
 	 @JoinColumn(name = "sensei_id")
 	    @OneToOne(fetch = FetchType.EAGER)
 	    private Sensei sensei;
