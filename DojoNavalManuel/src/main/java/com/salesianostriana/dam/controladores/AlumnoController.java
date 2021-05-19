@@ -29,6 +29,21 @@ public class AlumnoController {
 
 	@Autowired
 	private CursoServicio cursoServicio;
+	
+	@GetMapping("/detalleAlumnos/{id}")
+	public String verAlumno(@PathVariable("id") Long id, Model model) {
+
+		Alumno alumno= servicio.findById(id);
+		
+		if (alumno != null) {
+			model.addAttribute("alumno", alumno);
+			model.addAttribute("cursos", cursoServicio.findAll());
+			return "detalleAlumno";
+		} else {
+			return "redirect:/";
+		}
+		
+	}
 
 	/**
 	 * Este método nos redirige a la pagina para crear un nuevo alumno
