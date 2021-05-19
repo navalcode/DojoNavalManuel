@@ -8,7 +8,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,6 +31,10 @@ public class Curso {
 	private int anio;
 	private String nombre;
 	private double precio;
+	
+	 @JoinColumn(name = "sensei_id")
+	    @OneToOne(fetch = FetchType.EAGER)
+	    private Sensei sensei;
 
 	public Curso(int anio, String nombre, double precio) {
 		super();
@@ -64,6 +70,17 @@ public class Curso {
 	public void removeAlumno(Alumno a) {
 		this.alumnos.remove(a);
 		a.setCurso(null);
+	}
+	
+	public void addSensei(Sensei s) {
+		this.sensei=s;
+		s.setCurso(this);
+	}
+	
+	
+	public void removeSensei(Sensei s) {
+		this.sensei=null;
+		s.setCurso(null);
 	}
 
 }

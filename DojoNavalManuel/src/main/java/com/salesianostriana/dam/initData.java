@@ -8,8 +8,10 @@ import org.springframework.stereotype.Component;
 
 import com.salesianostriana.dam.modelo.Alumno;
 import com.salesianostriana.dam.modelo.Curso;
+import com.salesianostriana.dam.modelo.Sensei;
 import com.salesianostriana.dam.servicios.AlumnoServicio;
 import com.salesianostriana.dam.servicios.CursoServicio;
+import com.salesianostriana.dam.servicios.SenseiServicio;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,6 +21,7 @@ public class initData {
 	
 	private final AlumnoServicio alumnoServicio;
 	private final CursoServicio cursoServicio;
+	private final SenseiServicio senseiServicio;
 	
 	
 	
@@ -53,6 +56,12 @@ public class initData {
 		cursoServicio.save(nuevoB);
 		cursoServicio.save(nuevoC);
 		
+		Sensei sa =new Sensei("Jose María", null, null, null, null, null, null, null, 0, null, null, null, 0);
+		
+		senseiServicio.save(sa);
+		
+		nuevoC.addSensei(sa);
+		senseiServicio.edit(sa);
 		
 		nuevoC.addAlumno(a);
 		alumnoServicio.edit(a);
