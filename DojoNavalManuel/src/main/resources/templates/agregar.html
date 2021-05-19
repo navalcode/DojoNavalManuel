@@ -11,11 +11,12 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
 		integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 	<!--CSS propio-->
-	<link rel="stylesheet" href="style.css" type="text/css">
+	<link href="../../static/style.css" th:href="@{/style.css}"
+	rel="stylesheet" />
 	<!--Iconos Bootstrap-->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
 	<!--Favicon-->
-	<link rel="shortcut icon" type="image/x-icon" href="img/black-belt.png">
+	<link rel="shortcut icon" type="image/x-icon" href="img/black-belt.png" th:href="@{/img/black-belt.png}"  >
 
 	<title>Agregar Alumno</title>
 </head>
@@ -33,10 +34,10 @@
 						<span class="navbar-toggler-icon rounded menuHamburguesa"></span>
 					</button>
 					<div class="logo mx-auto ">
-						<a href="#"><img src="img/sakura.svg" alt="Sakura"></a>
+						<a href="#"><img src="img/sakura.svg" th:src="@{/img/sakura.svg}" alt="Sakura"></a>
 					</div>
 					<div class=" float-right ">
-						<a href=""><img src="img/logout.png" alt="LogOut"></a>
+						<a href=""><img src="img/logout.png" th:src="@{/img/logout.png}" alt="LogOut"></a>
 					</div>
 				</div>
 			</nav>
@@ -46,24 +47,24 @@
 				<ul class="navbar-nav col-12">
 
 					<li class="nav-item">
-						<a class="nav-link" href=""><img src="img/karate (1).png" alt="Administrador">
+						<a class="nav-link" href=""><img src="img/karate (1).png" th:src="@{/img/karate (1).png}" alt="Administrador">
 							J.Cesar</a>
 						<p class="id_admin">cesarjul@gmail.com</p>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href=""><img src="img/judo (1).png" alt="Alumnos">Alumnos</a>
+						<a class="nav-link " href=""><img src="img/judo (1).png" th:src="@{/img/judo (1).png}" alt="Alumnos">Alumnos</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href=""><img src="img/fight.png" alt="clases">Clases</a>
+						<a class="nav-link " href=""><img src="img/fight.png" th:src="@{/img/fight.png}" alt="clases">Clases</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href=""><img src="img/black-belt.png" alt="exámenes">Exámenes</a>
+						<a class="nav-link " href=""><img src="img/black-belt.png" th:src="@{/img/black-belt.png}" alt="exámenes">Exámenes</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href=""><img src="img/mount-fuji.png" alt="excursiones">Excursiones</a>
+						<a class="nav-link " href=""><img src="img/mount-fuji.png" th:src="@{/img/mount-fuji.png}" alt="excursiones">Excursiones</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href=""><img src="img/setting.png" alt="configuración">Configuración</a>
+						<a class="nav-link " href=""><img src="img/setting.png" th:src="@{/img/setting.png}" alt="configuración">Configuración</a>
 					</li>
 
 				</ul>
@@ -92,6 +93,8 @@
 
 				<div class="card-body w-100">
 				   <div class="fotoPerfil">
+				   <h3>
+						<span th:text="${alumno.id} ? 'Editar' : 'Nuevo'"></span> Alumno </h3>
                         <!--Resumen básico-->
                         <div>
                             
@@ -101,7 +104,7 @@
                             <!--Imagen-->
                         <div class="pack-imagen">
                             <div class="imagen"><img src="img/usuario.png"
-										th:src="${#strings.isEmpty(alumno.imagen)} ? 'img/usuario.png' : ${alumno.imagen}"
+										th:src="${#strings.isEmpty(alumno.imagen)} ? @{/img/usuario.png} : ${alumno.imagen}"
 										class="img-responsive" alt="userprofile" /> </div>
                         </div>
                         </div>
@@ -111,6 +114,7 @@
 
 					<form class="encendido" id="formulario" method="POST" action="#" th:action="@{/addAlumno}"
 						th:object="${alumno}">
+						<input type="hidden" th:field="*{id}" id="id" />
 						<!--Nombre y apellidos-->
 						<div class="row">
 							<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
@@ -244,7 +248,7 @@
 
 						<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
 							<label for="nombre">Imagen</label>
-							<input type="url" class="form-control" placeholder="Inserte aquí la url a su imagen (Ratio 1x1)"
+							<input type="url" class="form-control" placeholder="Inserte aquí la url de su imagen (Ratio 1x1)"
 								th:field="${alumno.imagen}">
 						
 						</div>
@@ -274,7 +278,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
 		crossorigin="anonymous"></script>
-	<script src="js.js" defer></script>
+	<script src="js.js"  defer></script>
 </body>
 
 </html>

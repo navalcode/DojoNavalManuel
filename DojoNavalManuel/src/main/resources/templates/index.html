@@ -106,8 +106,13 @@
 
                     <!--Botones edición y eliminar-->
                     <div class="botones">
-                        <button type="button" class="editar btn" id="abrirFormulario">Editar</button>
-                        <button type="button" class="eliminar btn">Eliminar</button>
+                          <a class="button editar btn" id="abrirFormulario"  
+                          th:href="@{/editarAlumno/{id}(id=${alumno.id})}">Editar</a>
+                    
+                           <a class="button eliminar btn"   
+                          th:href="@{/borrarAlumno/{id}(id=${alumno.id})}">Eliminar</a>
+                          
+                       
                     </div>
                 </div>
 

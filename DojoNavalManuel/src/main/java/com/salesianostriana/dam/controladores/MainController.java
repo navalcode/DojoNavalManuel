@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.modelo.Alumno;
 import com.salesianostriana.dam.modelo.Curso;
@@ -22,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-public class AlumnoController {
+public class MainController {
 
 	@Autowired
 	private AlumnoServicio servicio;
@@ -31,62 +30,31 @@ public class AlumnoController {
 	private CursoServicio cursoServicio;
 
 	/**
-	 * Este método nos redirige a la pagina para crear un nuevo alumno
+	 * todosLosAlumnos nos muestra una lista con los alumnos en la pagina index
 	 * 
 	 * @param model
-	 * @return agregar.html
+	 * @return index.html
 	 */
-	@GetMapping("/nuevo")
-	public String formularioAlumno(Model model) {
-		model.addAttribute("alumno", new Alumno());
-		return "agregar";
+	@GetMapping("/")
+	public String todosLosAlumnos(Model model) {
+		model.addAttribute("alumnos", servicio.findAll());
+		return "index";
 	}
 
 	/**
-	 * Este método guarda el nuevo alumno y posteriormente nos redirige a la página
-	 * principal.
+	 * Proxima funcionalidad, VER DETALLES, permitirá ver los detalles de un alumno
+	 * por su id.
 	 * 
-	 * @param alumno: El alumno que tomará del formulario.
-	 * @param model
-	 * @return redirect:/
-	 */
-	@PostMapping("/addAlumno")
-	public String submit(@ModelAttribute("alumno") Alumno alumno, Model model) {
-
-		
-		servicio.save(alumno);
-		return "redirect:/";
-	}
-	
-	/**
-	 * Este método permite editar un nuevo alumno, redirigiendonos a la pagina agregar con un alumno seleccionado por
-	 * id.
-	 * @param id
-	 * @param model
 	 * @return
 	 */
-	@GetMapping("/editarAlumno/{id}")
-	public String editarAlumno(@PathVariable("id") Long id, Model model) {
-		
-		Alumno alumno= servicio.findById(id);
-	
-		if (alumno != null) {
-			model.addAttribute("alumno", alumno);
-			model.addAttribute("cursos", cursoServicio.findAll());
-			return "agregar";
-		} else {
-			return "redirect:/";
-		}
-		
-	}
-	
-	@GetMapping("/borrarAlumno/{id}")
-	public String borrarAlumno(@PathVariable("id") Long id, Model model) {
+	@GetMapping("/alumno/{id}")
+	public String showDetails(@PathVariable("id") Long id, Model model) {
 
-		Alumno alumno = servicio.findById(id);
+		Alumno a = servicio.findById(id);
 
-		if (alumno != null) {
-			servicio.delete(alumno);
+		if (a != null) {
+			model.addAttribute("alumno", a);
+			return "detalle";
 		}
 
 		return "redirect:/";
@@ -112,5 +80,4 @@ public class AlumnoController {
 	public List<String> tiposFederados() {
 		return DatosFederados.lista_federados();
 	}
-
 }

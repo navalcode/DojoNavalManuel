@@ -13,4 +13,5 @@ public class CursoServicio extends BaseService<Curso, Long, CursoRepository> {
 		super(repo);
 	}
 
+	
 }
