@@ -98,8 +98,8 @@
                         </div>
                         <!--Imagen-->
                         <div class="pack-imagen">
-                            <div class="imagen"><img src="img/usuario.png"
-										th:src="${#strings.isEmpty(alumno.imagen)} ? 'img/usuario.png' : ${alumno.imagen}"
+                           <div class="imagen"><img src="img/usuario.png"
+										th:src="${#strings.isEmpty(alumno.imagen)} ? @{/img/usuario.png} : ${alumno.imagen}"
 										class="img-responsive" alt="userprofile" /> </div> <br>
 										<a class="button reg-op btn"   
                           th:href="@{/detalleAlumnos/{id}(id=${alumno.id})}">Ver Detalles</a>
