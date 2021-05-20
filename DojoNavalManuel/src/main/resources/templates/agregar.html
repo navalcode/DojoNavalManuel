@@ -112,7 +112,7 @@
 
 					<!--Formulario-->
 
-					<form class="encendido" id="formulario" method="POST" action="#" th:action="@{/addAlumno}"
+					<form class="encendido" th:onsubmit="comprobarDni(this)" id="formulario" method="POST" action="#" th:action="@{/addAlumno}"
 						th:object="${alumno}">
 						<input type="hidden" th:field="*{id}" id="id" />
 						<!--Nombre y apellidos-->
@@ -137,7 +137,8 @@
 								<div class="row">
 									<div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
 										<label for="fecha">DNI</label>
-										<input type="text" class="form-control" placeholder="DNI" th:field="*{dni}">
+										<input type="text" id="dni" pattern="[0-9]{8}[A-Za-z]{1}" title="Debe introducir 8 números y una letra"
+										 class="form-control" placeholder="DNI" th:field="*{dni}">
 									</div>
 									<div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
 										<label for="fecha">Teléfono </label>
@@ -278,7 +279,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
 		crossorigin="anonymous"></script>
-	<script src="js.js"  defer></script>
+	<script src="js.js" th:src="@{/js.js}"  defer></script>
 </body>
 
 </html>
