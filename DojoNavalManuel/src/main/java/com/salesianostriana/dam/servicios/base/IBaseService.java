@@ -24,7 +24,8 @@ public interface IBaseService<T, ID> {
 	T findById(ID id);
 
 	/**
-	 * Obtenemos todas las entidades de un tipo de entidad
+	 * Obtenemos todas las entidades de un ti@Override
+	po de entidad
 	 * @return
 	 */
 	List<T> findAll();

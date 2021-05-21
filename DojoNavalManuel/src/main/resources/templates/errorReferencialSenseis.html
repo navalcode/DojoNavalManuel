@@ -11,14 +11,13 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
 		integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 	<!--CSS propio-->
-<link href="../../static/style.css" th:href="@{/style.css}"
-	rel="stylesheet" />
+	<link href="../../static/style.css" th:href="@{/style.css}" rel="stylesheet" />
 	<!--Iconos Bootstrap-->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
 	<!--Favicon-->
-	<link rel="shortcut icon" type="image/x-icon" href="img/black-belt.png">
+	<link rel="shortcut icon" type="image/x-icon" href="img/black-belt.png" th:href="@{/img/black-belt.png}">
 
-	<title>Inicio</title>
+	<title>Error Referencial</title>
 </head>
 
 <body>
@@ -34,17 +33,17 @@
 						<span class="navbar-toggler-icon rounded menuHamburguesa"></span>
 					</button>
 					<div class="logo mx-auto ">
-						<a href="#"><img src="img/sakura.svg" alt="Sakura"></a>
+						<a href="#"><img src="img/sakura.svg" th:src="@{/img/sakura.svg}" alt="Sakura"></a>
 					</div>
 					<div class=" float-right ">
-						<a href=""><img src="img/logout.png" alt="LogOut"></a>
+						<a href=""><img src="img/logout.png" th:src="@{/img/logout.png}" alt="LogOut"></a>
 					</div>
 				</div>
 			</nav>
 		</div>
 		<div class="collapse col-12" id="navbarToggleExternalContent">
 			<div class="lista-m col-12">
-				<ul class="navbar-nav col-12">
+			<ul class="navbar-nav col-12">
 
 					<li class="nav-item">
 						<a class="nav-link" href=""><img  th:src="@{/img/karate (1).png}" alt="Administrador">
@@ -76,70 +75,32 @@
 	<div class="jumbotron-fluid col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto ">
 
 		<div class="botones">
-
-			<a class="button reg-op btn" href="#" th:href="@{/nuevo}">Agregar</a>
-
-
-			
-				<button class=" button reg-op btn dropdown-toggle" type="button" id="dropdownMenuButton"
-					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Filtrar
-				</button>
-
-				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<a class="dropdown-item" th:href="@{/}">Todos</a>
-
-					<a class="dropdown-item" th:each="curso : ${cursos}" th:href="@{/?(idCurso=${curso.id})}"
-						th:text="${curso.nombre}">Curso</a>
-
-
-				
-			</div>
-
-
-
-
-			<button type="button" class="reg-op btn">ordenar</button>
+			<a class="button reg-op btn" href="#" th:href="@{/senseis}">Volver</a>
 		</div>
 
 	</div>
 	<!--Fin jumbotrón-->
 
-	<main class="container-fluid border rounded col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto main">
-		<h3>Alumnos</h3>
+	 <main class="container-fluid border rounded col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto main">
 
-		<!--Modelo para representar un alumno-->
-		<div class="row ">
-			<div class="mx-auto col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3 mt-4 mb-4" th:each="alumno:${alumnos}">
+        <!--Modelo para mostrar alerta-->
+        <div class="row">
+            <div class="mx-auto col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11 mt-4 mb-4" >
 
-				<div class="card-body w-100">
-					<div class="fotoPerfil">
-						<!--Resumen básico-->
-						<div>
-							<h5 class="card-title w-100" th:text="${alumno.nombre}"></h5>
-							<p class="card-text w-100" th:text="${alumno.calcularEdad()}"></p>
-							<p class="card-text w-100" th:text="'Cinturón: '+${alumno.cinturon}"></p>
-						</div>
-						<!--Imagen-->
-						<div class="pack-imagen">
-							<div class="imagen"><img src="img/usuario.png" th:src="${#strings.isEmpty(alumno.imagen)} ? @{/img/usuario.png} : ${alumno.imagen}"
-										class="img-responsive" alt="userprofile" /> </div> <br>
-										<a class="button reg-op btn"   
-                          th:href="@{/detalleAlumnos/{id}(id=${alumno.id})}">Ver Detalles</a>
+                <div class="card-body w-100">
+                    <div class="fotoPerfil">
+                        <!--Resumen básico-->
+                        <div>
+                        <h1 class="text-danger">ERROR 500</h1>
+                        <p>Estás tratando de eliminar un sensei que aún tiene cursos asignados, en primer lugar elimine los cursos asociados a este sensei.</p>
+							<p>También es posible que este tratando de eliminar un sensei nulo.</p>
+							<a class="button reg-op btn" th:href="@{/cursos}">Ir a la página de cursos</a>
                         </div>
+                       
                          
                     </div>
 <br>
-                    <!--Botones edición y eliminar-->
-                    <div class="botones">
-                          <a class="button editar btn" id="abrirFormulario"  
-                          th:href="@{/editarAlumno/{id}(id=${alumno.id})}">Editar</a>
-                    
-                           <a class="button eliminar btn"   
-                          th:href="@{/borrarAlumno/{id}(id=${alumno.id})}">Eliminar</a>
-                          
-                       
-                    </div>
+                   
                 </div>
 
             </div>

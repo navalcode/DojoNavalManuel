@@ -33,10 +33,11 @@ public class Persona {
 	private String municipio;
 	private String direccion;
 	private String imagen;
-
+	private String cinturon;
+	
 	public Persona(String nombre, String apellido1, String apellido2, String email, String dni, String telefono,
 			LocalDate fechaNacimiento, String provincia, int codigoPostal, String municipio, String direccion,
-			String imagen) {
+			String imagen, String cinturon) {
 		super();
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
@@ -50,6 +51,9 @@ public class Persona {
 		this.municipio = municipio;
 		this.direccion = direccion;
 		this.imagen = imagen;
+		this.cinturon = cinturon;
 	}
+
+
 
 }

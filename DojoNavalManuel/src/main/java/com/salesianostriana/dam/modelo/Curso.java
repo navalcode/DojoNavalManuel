@@ -8,9 +8,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,8 +35,7 @@ public class Curso {
 	
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
-	 @JoinColumn(name = "sensei_id")
-	    @OneToOne(fetch = FetchType.EAGER)
+	    @ManyToOne(fetch = FetchType.EAGER)
 	    private Sensei sensei;
 
 	public Curso(int anio, String nombre, double precio) {
@@ -74,15 +74,6 @@ public class Curso {
 		a.setCurso(null);
 	}
 	
-	public void addSensei(Sensei s) {
-		this.sensei=s;
-		s.setCurso(this);
-	}
 	
-	
-	public void removeSensei(Sensei s) {
-		this.sensei=null;
-		s.setCurso(null);
-	}
 
 }

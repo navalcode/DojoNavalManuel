@@ -11,14 +11,13 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
 		integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 	<!--CSS propio-->
-	<link href="../../static/style.css" th:href="@{/style.css}"
-	rel="stylesheet" />
+	<link href="../../static/style.css" th:href="@{/style.css}" rel="stylesheet" />
 	<!--Iconos Bootstrap-->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
 	<!--Favicon-->
-	<link rel="shortcut icon" type="image/x-icon" href="img/black-belt.png" th:href="@{/img/black-belt.png}"  >
+	<link rel="shortcut icon" type="image/x-icon" href="img/black-belt.png" th:href="@{/img/black-belt.png}">
 
-	<title>Agregar Alumno</title>
+	<title>Agregar Sensei</title>
 </head>
 
 <body>
@@ -44,7 +43,7 @@
 		</div>
 		<div class="collapse col-12" id="navbarToggleExternalContent">
 			<div class="lista-m col-12">
-		<ul class="navbar-nav col-12">
+			<ul class="navbar-nav col-12">
 
 					<li class="nav-item">
 						<a class="nav-link" href=""><img  th:src="@{/img/karate (1).png}" alt="Administrador">
@@ -76,11 +75,11 @@
 	<div class="jumbotron-fluid col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto ">
 
 		<div class="botones">
-			 <a class="button reg-op btn" href="#" th:href="@{/}">Volver</a>
-			 
-			
-			
-		
+			<a class="button reg-op btn" href="#" th:href="@{/senseis}">Volver</a>
+
+
+
+
 		</div>
 
 	</div>
@@ -94,42 +93,38 @@
 			<div class="mx-auto col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11 mt-4 mb-4">
 
 				<div class="card-body w-100">
-				   <div class="fotoPerfil">
-				   <h3>
-						<span th:text="${alumno.id} ? 'Editar' : 'Nuevo'"></span> Alumno </h3>
-                        <!--Resumen básico-->
-                        <div>
-                            
-                        </div>
-                        <!--Imagen-->
-                        <div class="pack-imagen">
-                            <!--Imagen-->
-                        <div class="pack-imagen">
-                            <div class="imagen"><img src="img/usuario.png"
-										th:src="${#strings.isEmpty(alumno.imagen)} ? @{/img/usuario.png} : ${alumno.imagen}"
-										class="img-responsive" alt="userprofile" /> </div>
-                        </div>
-                        </div>
-                    </div>
+					<div class="fotoPerfil">
+						<h3>
+							<span th:text="${sensei.id} ? 'Editar' : 'Nuevo'"></span> Sensei
+						</h3>
+						<!--Resumen básico-->
+						<div>
+
+						</div>
+
+					</div>
 
 					<!--Formulario-->
 
-					<form class="encendido" th:onsubmit="comprobarDni(this)" id="formulario" method="POST" action="#"  th:action="${alumno.id != 0} ? @{/editarSubmit} : @{/addAlumno}"
-						th:object="${alumno}">
+					<form class="encendido" id="formulario" th:onsubmit="comprobarDni(this)" method="POST" action="#"
+						th:action="${sensei.id != 0} ? @{/editarSenseiSubmit} : @{/addSensei}" th:object="${sensei}">
 						<input type="hidden" th:field="*{id}" id="id" />
 						<!--Nombre y apellidos-->
 						<div class="row">
 							<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
 								<label for="nombre">Nombre</label>
-								<input required type="text" class="form-control" placeholder="Nombre" th:field="*{nombre}">
+								<input required type="text" class="form-control" placeholder="Nombre"
+									th:field="*{nombre}">
 							</div>
 							<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
 								<label for="Apellido1">Apellido 1</label>
-								<input required type="text" class="form-control" placeholder="Apellido1" th:field="*{apellido1}">
+								<input required type="text" class="form-control" placeholder="Apellido1"
+									th:field="*{apellido1}">
 							</div>
 							<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
 								<label for="Apellido2">Apellido 2</label>
-								<input required type="text" class="form-control" placeholder="Apellido2" th:field="*{apellido2}">
+								<input required type="text" class="form-control" placeholder="Apellido2"
+									th:field="*{apellido2}">
 							</div>
 						</div>
 						<!--fila unica hasta fecha-->
@@ -139,8 +134,9 @@
 								<div class="row">
 									<div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
 										<label for="fecha">DNI</label>
-										<input required type="text" id="dni" pattern="[0-9]{8}[A-Za-z]{1}" title="Debe introducir 8 números y una letra"
-										 class="form-control" placeholder="DNI" th:field="*{dni}">
+										<input required type="text" id="dni" pattern="[0-9]{8}[A-Za-z]{1}"
+											title="Debe introducir 8 números y una letra" class="form-control"
+											placeholder="DNI" th:field="*{dni}">
 									</div>
 									<div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
 										<label for="fecha">Teléfono </label>
@@ -177,97 +173,74 @@
 												th:text="${curso.nombre}">Curso</option>
 										</select>
 									</div>
-									<div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-										<label for="fechaIns"> Fecha de Inscripción</label>
-										<input required type="date" class="form-control" id="fechaIns"
-											placeholder="Fecha de Inscripción" th:field="*{fechaInscripcion}">
-									</div>
+
 								</div>
 							</div>
 							<div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
-								<!--Federado y Cinturón-->
+								<!--Cinturón-->
 								<div class="row">
-									<!-- RadioButton Federado -->
-									<div class="form-group col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-auto">
+								
 
-										<label for="federados">Federado</label>
+								<!--Cinturones -->
+								<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-6 ">
 
-										<select required class="form-control" id="federado" th:field="*{federado}">
-											<option th:each="federado : ${lista_federados}" th:value="${federado}"
-												th:text="${federado}">Federado </option>
-										</select>
-									</div>
+									<label for="cinturones">Cinturón</label>
 
-									<!--Cinturones -->
-									<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-6 ">
+									<select required class="form-control" id="cinturones" th:field="*{cinturon}">
+										<option th:each="cinturon : ${lista_cinturones}" th:value="${cinturon}"
+											th:text="${cinturon}">Cinturón </option>
+									</select>
 
-										<label for="cinturones">Cinturón</label>
-
-										<select required class="form-control" id="cinturones" th:field="*{cinturon}">
-											<option th:each="cinturon : ${lista_cinturones}" th:value="${cinturon}"
-												th:text="${cinturon}">Cinturón </option>
-										</select>
-
-									</div>
 								</div>
 							</div>
 						</div>
-						<!--Dirección-->
+				</div>
+				<!--Dirección-->
+				<div class="row">
+					<div class="col-12 ">
+
 						<div class="row">
-							<div class="col-12 ">
-
-								<div class="row">
-									<!-- Provincias -->
-									<div class="form-group col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2">
-										<label for="provincia">Provincia</label>
-										<select required name="provincia" class="form-control" th:field="*{provincia}">
-											<option th:each="provincia : ${lista_provincias}" th:value="${provincia}"
-												th:text="${provincia}">Provincia</option>
-										</select>
-
-									</div>
-									<div class="form-group col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2">
-										<label for="nombre">Código Postal</label>
-										<input required type="text" class="form-control" placeholder="CP"
-											th:field="*{codigoPostal}">
-									</div>
-									<div class="form-group col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2">
-										<label for="nombre">Municipio</label>
-										<input required type="text" class="form-control" placeholder="Municipio"
-											th:field="*{municipio}">
-									</div>
-									<div class="form-group col-12 col-sm-12 col-md-3 col-lg-6 col-xl-6">
-										<label for="nombre">Dirección</label>
-										<input required type="text" class="form-control" placeholder="Dirección"
-											th:field="*{direccion}">
-									</div>
-								</div>
+							<!-- Provincias -->
+							<div class="form-group col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2">
+								<label for="provincia">Provincia</label>
+								<select required name="provincia" class="form-control" th:field="*{provincia}">
+									<option th:each="provincia : ${provincias}" th:value="${provincia}"
+										th:text="${provincia}">Provincia</option>
+								</select>
 							</div>
+
+							<div class="form-group col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2">
+								<label for="nombre">Código Postal</label>
+								<input required type="text" class="form-control" placeholder="CP"
+									th:field="*{codigoPostal}">
+							</div>
+
+							<div class="form-group col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2">
+								<label for="nombre">Municipio</label>
+								<input required type="text" class="form-control" placeholder="Municipio"
+									th:field="*{municipio}">
+							</div>
+
+							<div class="form-group col-12 col-sm-12 col-md-3 col-lg-6 col-xl-6">
+								<label for="nombre">Dirección</label>
+								<input required type="text" class="form-control" placeholder="Dirección"
+									th:field="*{direccion}">
+							</div>
+
 						</div>
-
-						<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-							<label for="nombre">Imagen</label>
-							<input type="url" class="form-control" placeholder="Inserte aquí la url de su imagen (Ratio 1x1)"
-								th:field="${alumno.imagen}">
-						
-						</div>
-
-						<!--Comentarios-->
-						<div class="form-group">
-							<label for="comentarios">Comentarios</label>
-							<textarea required class="form-control" id="comentarios" rows="3"
-								th:field="*{comentarios}"></textarea>
-						</div>
-
-
-						<button type="submit" name="enviar" value="Enviar" class="btn btn-primary">Guardar</button>
-					</form>
-
+					</div>
 				</div>
 
-			</div>
-		</div>
-	</main>
+
+
+			
+
+
+		
+			<button type="submit" name="enviar" value="Enviar" class="btn btn-primary">Guardar</button>
+			</form>
+				</div></div></div></main>
+		
 
 
 
@@ -277,7 +250,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
 		crossorigin="anonymous"></script>
-	<script src="js.js" th:src="@{/js.js}"  defer></script>
+	<script src="js.js" th:src="@{/js.js}" defer></script>
 </body>
 
 </html>

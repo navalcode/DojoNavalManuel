@@ -11,13 +11,14 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
 		integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 	<!--CSS propio-->
-	<link href="../../static/style.css" th:href="@{/style.css}" rel="stylesheet" />
+	<link href="../../static/style.css" th:href="@{/style.css}"
+	rel="stylesheet" />
 	<!--Iconos Bootstrap-->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
 	<!--Favicon-->
-	<link rel="shortcut icon" type="image/x-icon" href="img/black-belt.png" th:href="@{/img/black-belt.png}">
+	<link rel="shortcut icon" type="image/x-icon" href="img/black-belt.png" th:href="@{/img/black-belt.png}"  >
 
-	<title>Error Referencial</title>
+	<title>Agregar Alumno</title>
 </head>
 
 <body>
@@ -67,7 +68,6 @@
 					</li>
 
 				</ul>
-				</ul>
 			</div>
 		</div>
 		<!--Menú hamburguesa fin-->
@@ -76,48 +76,80 @@
 	<div class="jumbotron-fluid col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto ">
 
 		<div class="botones">
-			<a class="button reg-op btn" href="#" th:href="@{/cursos}">Volver</a>
+			 <a class="button reg-op btn" href="#" th:href="@{/cursos}">Volver</a>
 		</div>
 
 	</div>
 	<!--Fin jumbotrón-->
 
-	 <main class="container-fluid border rounded col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto main">
+	<main class="container-fluid border rounded col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto main">
 
-        <!--Modelo para mostrar alerta-->
-        <div class="row">
-            <div class="mx-auto col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11 mt-4 mb-4" >
 
-                <div class="card-body w-100">
-                    <div class="fotoPerfil">
+		<div class="row">
+			<!--Modelo para representar un curso-->
+			<div class="mx-auto col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11 mt-4 mb-4">
+
+				<div class="card-body w-100">
+				   <div class="fotoPerfil">
+				   <h3>
+						<span th:text="${curso.id} ? 'Editar' : 'Nuevo'"></span> Curso </h3>
                         <!--Resumen básico-->
                         <div>
-                        <h1 class="text-danger">ERROR 500</h1>
-                        <p>Estás tratando de eliminar un curso que aún tiene alumnos asignados, en primer lugar elimine los alumnos asociados a este curso.</p>
-						<p>Recuerda que puedes filtrar los alumnos por curso en la pantalla principal, allí podrás eliminarlos cómodamente.</p>
-							<p>También es posible que este tratando de eliminar un curso nulo.</p>
-							<a class="button reg-op btn" th:href="@{/}">Ir a la página princial</a>
                         </div>
-                       
-                         
                     </div>
-<br>
-                   
-                </div>
 
-            </div>
+					<!--Formulario-->
 
-    </main>
+					<form class="encendido" id="formulario" method="POST" action="#"  th:action="${curso.id != 0} ? @{/editarCursoSubmit} : @{/addCurso}"
+						th:object="${curso}">
+						<input type="hidden" th:field="*{id}" id="id" />
+						<!--Nombre,año y precio-->
+						<div class="row">
+							<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+								<label for="nombre">Nombre</label>
+								<input required type="text" class="form-control" placeholder="Nombre" th:field="*{nombre}">
+							</div>
+							<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+								<label for="anio">Año</label>
+								<input required type="text" class="form-control" placeholder="año" th:field="*{anio}">
+							</div>
+							<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+								<label for="precio">Precio</label>
+								<input required type="number" min="1" step="any" class="form-control" placeholder="precio" th:field="*{precio}">
+							</div>
+						</div>
+						<!--Fila para asignar un sensei-->
+						<div class="row ">
+							<div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+								<!--Curso y fecha Inscripción-->
+								<div class="row">
+									<div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+										<label for="sensei">Sensei</label>
+										<select required class="form-control" id="sensei" th:field="*{sensei}">
+											<option th:each="sensei : ${senseis}" th:value="${sensei.id}"
+												th:text="${sensei.nombre}">Sensei</option>
+										</select>
+									</div></div></div></div>
+
+					
+						<button type="submit" name="enviar" value="Enviar" class="btn btn-primary">Guardar</button>
+					</form>
+
+				</div>
+
+			</div>
+		</div>
+	</main>
 
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-        crossorigin="anonymous"></script>
-    <script src="js.js" defer></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+		crossorigin="anonymous"></script>
+	<script src="js.js" th:src="@{/js.js}"  defer></script>
 </body>
 
 </html>
