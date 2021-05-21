@@ -47,24 +47,24 @@
 				<ul class="navbar-nav col-12">
 
 					<li class="nav-item">
-						<a class="nav-link" href=""><img src="img/karate (1).png" th:src="@{/img/karate (1).png}" alt="Administrador">
+						<a class="nav-link" href=""><img src="img/karate (1).png" alt="Administrador">
 							J.Cesar</a>
 						<p class="id_admin">cesarjul@gmail.com</p>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href=""><img src="img/judo (1).png" th:src="@{/img/judo (1).png}" alt="Alumnos">Alumnos</a>
+						<a class="nav-link " href="" th:href="@{/}"><img src="img/judo (1).png" alt="Alumnos">Alumnos</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href=""><img src="img/fight.png" th:src="@{/img/fight.png}" alt="clases">Clases</a>
+						<a class="nav-link " href=""><img src="img/fight.png" alt="Senseis">Senseis</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href=""><img src="img/black-belt.png" th:src="@{/img/black-belt.png}" alt="exámenes">Exámenes</a>
+						<a class="nav-link " href="" th:href="@{/cursos}"><img src="img/black-belt.png" alt="Cursos">Cursos</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href=""><img src="img/mount-fuji.png" th:src="@{/img/mount-fuji.png}" alt="excursiones">Excursiones</a>
+						<a class="nav-link " href=""><img src="img/mount-fuji.png" alt="excursiones">Excursiones</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href=""><img src="img/setting.png" th:src="@{/img/setting.png}" alt="configuración">Configuración</a>
+						<a class="nav-link " href=""><img src="img/setting.png" alt="configuración">Configuración</a>
 					</li>
 
 				</ul>
@@ -114,22 +114,22 @@
 
 					<!--Formulario-->
 
-					<form class="encendido" th:onsubmit="comprobarDni(this)" id="formulario" method="POST" action="#" th:action="@{/addAlumno}"
+					<form class="encendido" th:onsubmit="comprobarDni(this)" id="formulario" method="POST" action="#"  th:action="${alumno.id != 0} ? @{/editarSubmit} : @{/addAlumno}"
 						th:object="${alumno}">
 						<input type="hidden" th:field="*{id}" id="id" />
 						<!--Nombre y apellidos-->
 						<div class="row">
 							<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
 								<label for="nombre">Nombre</label>
-								<input type="text" class="form-control" placeholder="Nombre" th:field="*{nombre}">
+								<input required type="text" class="form-control" placeholder="Nombre" th:field="*{nombre}">
 							</div>
 							<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
 								<label for="Apellido1">Apellido 1</label>
-								<input type="text" class="form-control" placeholder="Apellido1" th:field="*{apellido1}">
+								<input required type="text" class="form-control" placeholder="Apellido1" th:field="*{apellido1}">
 							</div>
 							<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
 								<label for="Apellido2">Apellido 2</label>
-								<input type="text" class="form-control" placeholder="Apellido2" th:field="*{apellido2}">
+								<input required type="text" class="form-control" placeholder="Apellido2" th:field="*{apellido2}">
 							</div>
 						</div>
 						<!--fila unica hasta fecha-->
@@ -139,12 +139,12 @@
 								<div class="row">
 									<div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
 										<label for="fecha">DNI</label>
-										<input type="text" id="dni" pattern="[0-9]{8}[A-Za-z]{1}" title="Debe introducir 8 números y una letra"
+										<input required type="text" id="dni" pattern="[0-9]{8}[A-Za-z]{1}" title="Debe introducir 8 números y una letra"
 										 class="form-control" placeholder="DNI" th:field="*{dni}">
 									</div>
 									<div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
 										<label for="fecha">Teléfono </label>
-										<input type="text" class="form-control" placeholder="Teléfono"
+										<input required type="text" class="form-control" placeholder="Teléfono"
 											th:field="*{telefono}">
 									</div>
 								</div>
@@ -154,7 +154,7 @@
 								<div class="row">
 									<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-6 ">
 										<label for="fecha">Correo electrónico</label>
-										<input type="email" class="form-control" id="email"
+										<input required type="email" class="form-control" id="email"
 											placeholder="Correo electrónico" th:field="*{email}">
 									</div>
 									<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-6 ">
@@ -172,14 +172,14 @@
 								<div class="row">
 									<div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
 										<label for="curso">Curso</label>
-										<select class="form-control" id="curso" th:field="*{curso}">
+										<select required class="form-control" id="curso" th:field="*{curso}">
 											<option th:each="curso : ${lista_cursos}" th:value="${curso.id}"
 												th:text="${curso.nombre}">Curso</option>
 										</select>
 									</div>
 									<div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
 										<label for="fechaIns"> Fecha de Inscripción</label>
-										<input type="date" class="form-control" id="fechaIns"
+										<input required type="date" class="form-control" id="fechaIns"
 											placeholder="Fecha de Inscripción" th:field="*{fechaInscripcion}">
 									</div>
 								</div>
@@ -192,7 +192,7 @@
 
 										<label for="federados">Federado</label>
 
-										<select class="form-control" id="federado" th:field="*{federado}">
+										<select required class="form-control" id="federado" th:field="*{federado}">
 											<option th:each="federado : ${lista_federados}" th:value="${federado}"
 												th:text="${federado}">Federado </option>
 										</select>
@@ -203,7 +203,7 @@
 
 										<label for="cinturones">Cinturón</label>
 
-										<select class="form-control" id="cinturones" th:field="*{cinturon}">
+										<select required class="form-control" id="cinturones" th:field="*{cinturon}">
 											<option th:each="cinturon : ${lista_cinturones}" th:value="${cinturon}"
 												th:text="${cinturon}">Cinturón </option>
 										</select>
@@ -228,17 +228,17 @@
 									</div>
 									<div class="form-group col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2">
 										<label for="nombre">Código Postal</label>
-										<input type="text" class="form-control" placeholder="CP"
+										<input required type="text" class="form-control" placeholder="CP"
 											th:field="*{codigoPostal}">
 									</div>
 									<div class="form-group col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2">
 										<label for="nombre">Municipio</label>
-										<input type="text" class="form-control" placeholder="Municipio"
+										<input required type="text" class="form-control" placeholder="Municipio"
 											th:field="*{municipio}">
 									</div>
 									<div class="form-group col-12 col-sm-12 col-md-3 col-lg-6 col-xl-6">
 										<label for="nombre">Dirección</label>
-										<input type="text" class="form-control" placeholder="Dirección"
+										<input required type="text" class="form-control" placeholder="Dirección"
 											th:field="*{direccion}">
 									</div>
 								</div>
@@ -255,7 +255,7 @@
 						<!--Comentarios-->
 						<div class="form-group">
 							<label for="comentarios">Comentarios</label>
-							<textarea class="form-control" id="comentarios" rows="3"
+							<textarea required class="form-control" id="comentarios" rows="3"
 								th:field="*{comentarios}"></textarea>
 						</div>
 

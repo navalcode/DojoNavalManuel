@@ -95,6 +95,12 @@ public class AlumnoController {
 		
 	}
 	
+	@PostMapping("/editarSubmit")
+	public String guardarEdicionAlumno(@ModelAttribute("alumno") Alumno a) {
+		servicio.edit(a);
+		return "redirect:/";
+	}
+	
 	@GetMapping("/borrarAlumno/{id}")
 	public String borrarAlumno(@PathVariable("id") Long id, Model model) {
 

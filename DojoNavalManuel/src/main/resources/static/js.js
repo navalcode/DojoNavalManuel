@@ -8,3 +8,7 @@ function comprobarDni() {
        return false;
     }
 }
+
+function closeWin() {
+ open(location, '_self').close();
+}

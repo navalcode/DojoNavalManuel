@@ -17,7 +17,7 @@
 	<!--Favicon-->
 	<link rel="shortcut icon" type="image/x-icon" href="img/black-belt.png" th:href="@{/img/black-belt.png}">
 
-	<title>Detalle Alumno</title>
+	<title>Error Referencial</title>
 </head>
 
 <body>
@@ -75,7 +75,7 @@
 	<div class="jumbotron-fluid col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto ">
 
 		<div class="botones">
-			<a class="button reg-op btn" href="#" th:href="@{/}">Volver</a>
+			<a class="button reg-op btn" href="#" th:href="@{/cursos}">Volver</a>
 		</div>
 
 	</div>
@@ -83,7 +83,7 @@
 
 	 <main class="container-fluid border rounded col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto main">
 
-        <!--Modelo para representar un alumno-->
+        <!--Modelo para mostrar alerta-->
         <div class="row">
             <div class="mx-auto col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11 mt-4 mb-4" >
 
@@ -91,30 +91,13 @@
                     <div class="fotoPerfil">
                         <!--Resumen básico-->
                         <div>
-                        <h3 th:text="'Detalles: '+${alumno.nombre}"></h3>
-                           	<h5 class="card-title w-100" th:text="${alumno.nombre}+' '+${alumno.apellido1}+' '+${alumno.apellido2}"></h5>
-							<h6 class="card-text w-100" th:text="${alumno.calcularEdad()}"></h6>
-							<h6 class="card-text w-100" th:text="${alumno.curso.nombre}"></h6>
-							<h6 class="card-text w-100" th:text="'Cinturón: '+${alumno.cinturon}"></h6>
-							<h6 class="card-text w-100" th:text="'Federado: '+${alumno.federado}"></h6>
-							<h6 class="card-text w-100" th:text="'Comentarios: '+${alumno.comentarios}"></h6>
-							<h6 class="card-text w-100" th:text="'Fecha de inscripción: '+${alumno.fechaInscripcion}" ></h6>
-							<p class="card-text w-100" th:text="'Email: '+${alumno.email}"></p>
-							<p class="card-text w-100" th:text="'DNI: '+${alumno.dni}"></p>
-							<p class="card-text w-100" th:text="'Teléfono: '+${alumno.telefono}"></p>
-							<p class="card-text w-100" th:text="'Fecha de Nacimiento: '+${alumno.fechaNacimiento}"></p>
-							<p class="card-text w-100" th:text="'Provincia: '+${alumno.provincia}"></p>
-							<p class="card-text w-100" th:text="'Código Postal: '+${alumno.codigoPostal}"></p>
-							<p class="card-text w-100" th:text="'Municipio: '+${alumno.municipio}"></p>
-							<p class="card-text w-100" th:text="'Dirección: '+${alumno.direccion}"></p>
-							
+                        <h1 class="text-danger">ERROR 500</h1>
+                        <p>Estás tratando de eliminar un curso que aún tiene alumnos asignados, en primer lugar elimine los alumnos asociados a este curso.</p>
+						<p>Recuerda que puedes filtrar los alumnos por curso en la pantalla principal, allí podrás eliminarlos cómodamente.</p>
+							<p>También es posible que este tratando de eliminar un curso nulo.</p>
+							<a class="button reg-op btn" th:href="@{/}">Ir a la página princial</a>
                         </div>
-                        <!--Imagen-->
-                        <div class="pack-imagen">
-                           <div class="imagen"><img src="img/usuario.png"
-										th:src="${#strings.isEmpty(alumno.imagen)} ? @{/img/usuario.png} : ${alumno.imagen}"
-										class="img-responsive" alt="userprofile" /> </div> 
-                        </div>
+                       
                          
                     </div>
 <br>
