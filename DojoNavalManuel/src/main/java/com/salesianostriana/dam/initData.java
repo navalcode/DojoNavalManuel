@@ -57,15 +57,29 @@ public class initData {
 		cursoServicio.save(nuevoC);
 		
 		Sensei sa =new Sensei("Jose María", null, null, null, null, null, null, null, 0, null, null, null, 1150.00);
+		Sensei sb =new Sensei("María Jose", null, null, null, null, null, null, null, 0, null, null, null, 1150.00);
+		Sensei sc =new Sensei("Abraham", null, null, null, null, null, null, null, 0, null, null, null, 1150.00);
 		
 		senseiServicio.save(sa);
+		senseiServicio.save(sb);
+		senseiServicio.save(sc);
+	
+		nuevoA.addSensei(sb);
+		senseiServicio.edit(sb);
 		
+		nuevoB.addSensei(sc);
+		senseiServicio.edit(sc);
+		
+	
 		nuevoC.addSensei(sa);
 		senseiServicio.edit(sa);
+		
 		
 		nuevoC.addAlumno(a);
 		alumnoServicio.edit(a);
 		
+		nuevoA.addAlumno(b);
+		alumnoServicio.edit(b);
 		
 		
 	}

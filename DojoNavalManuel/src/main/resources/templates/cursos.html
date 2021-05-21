@@ -74,29 +74,8 @@
 	<div class="jumbotron-fluid col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto ">
 
 		<div class="botones">
-
 			<a class="button reg-op btn" href="#" th:href="@{/nuevo}">Agregar</a>
-
-
-			
-				<button class=" button reg-op btn dropdown-toggle" type="button" id="dropdownMenuButton"
-					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Filtrar
-				</button>
-
-				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<a class="dropdown-item" th:href="@{/}">Todos</a>
-
-					<a class="dropdown-item" th:each="curso : ${cursos}" th:href="@{/?(idCurso=${curso.id})}"
-						th:text="${curso.nombre}">Curso</a>
-
-
-				
-			</div>
-
-
-
-
+			<button type="button" class="reg-op btn">Filtrar</button>
 			<button type="button" class="reg-op btn">ordenar</button>
 		</div>
 
@@ -104,37 +83,31 @@
 	<!--Fin jumbotrón-->
 
 	<main class="container-fluid border rounded col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto main">
-		<h3>Alumnos</h3>
-
+		<h3>Cursos</h3>
 		<!--Modelo para representar un alumno-->
-		<div class="row ">
-			<div class="mx-auto col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3 mt-4 mb-4" th:each="alumno:${alumnos}">
+		<div class="row">
+			<div class="mx-auto col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3 mt-4 mb-4" th:each="curso:${cursos}">
 
 				<div class="card-body w-100">
 					<div class="fotoPerfil">
 						<!--Resumen básico-->
 						<div>
-							<h5 class="card-title w-100" th:text="${alumno.nombre}"></h5>
-							<p class="card-text w-100" th:text="${alumno.calcularEdad()}"></p>
-							<p class="card-text w-100" th:text="'Cinturón: '+${alumno.cinturon}"></p>
+							<h5 class="card-title w-100" th:text="'Curso: '+${curso.nombre}"></h5>
+							<p class="card-text w-100" th:text="'Año: '+${curso.anio}"></p>
+							<p class="card-text w-100" th:text="'Precio: '+${curso.precio}"></p>
+							<p class="card-text w-100" th:text="'Sensei: '+${curso.sensei.nombre}"></p>
 						</div>
-						<!--Imagen-->
-						<div class="pack-imagen">
-							<div class="imagen"><img src="img/usuario.png" th:src="${#strings.isEmpty(alumno.imagen)} ? @{/img/usuario.png} : ${alumno.imagen}"
-										class="img-responsive" alt="userprofile" /> </div> <br>
-										<a class="button reg-op btn"   
-                          th:href="@{/detalleAlumnos/{id}(id=${alumno.id})}">Ver Detalles</a>
-                        </div>
+					
                          
                     </div>
 <br>
                     <!--Botones edición y eliminar-->
                     <div class="botones">
                           <a class="button editar btn" id="abrirFormulario"  
-                          th:href="@{/editarAlumno/{id}(id=${alumno.id})}">Editar</a>
+                          th:href="@{/editarCurso/{id}(id=${curso.id})}">Editar</a>
                     
                            <a class="button eliminar btn"   
-                          th:href="@{/borrarAlumno/{id}(id=${alumno.id})}">Eliminar</a>
+                          th:href="@{/borrarCurso/{id}(id=${curso.id})}">Eliminar</a>
                           
                        
                     </div>

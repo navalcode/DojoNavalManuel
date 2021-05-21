@@ -99,7 +99,7 @@ header {
     border: 1px transparent;
     border-radius: 10px;
     width: 125px;
-    height: 40%;
+   
 }
 .reg-op h6{
     margin-top: 5px;
@@ -228,3 +228,6 @@ main{
     display: none;
 }
 
+
+
+  

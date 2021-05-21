@@ -100,6 +100,7 @@
                         <h3 th:text="'Detalles: '+${alumno.nombre}"></h3>
                            	<h5 class="card-title w-100" th:text="${alumno.nombre}+' '+${alumno.apellido1}+' '+${alumno.apellido2}"></h5>
 							<h6 class="card-text w-100" th:text="${alumno.calcularEdad()}"></h6>
+							<h6 class="card-text w-100" th:text="${alumno.curso.nombre}"></h6>
 							<h6 class="card-text w-100" th:text="'Cinturón: '+${alumno.cinturon}"></h6>
 							<h6 class="card-text w-100" th:text="'Federado: '+${alumno.federado}"></h6>
 							<h6 class="card-text w-100" th:text="'Comentarios: '+${alumno.comentarios}"></h6>

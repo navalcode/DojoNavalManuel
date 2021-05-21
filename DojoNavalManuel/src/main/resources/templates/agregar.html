@@ -77,7 +77,9 @@
 
 		<div class="botones">
 			 <a class="button reg-op btn" href="#" th:href="@{/nuevo}">Agregar</a>
-			<button type="button" class="reg-op btn">Filtrar</button>
+			 
+			
+			
 			<button type="button" class="reg-op btn">ordenar</button>
 		</div>
 
@@ -171,7 +173,6 @@
 									<div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
 										<label for="curso">Curso</label>
 										<select class="form-control" id="curso" th:field="*{curso}">
-											<option value="-1">---</option>
 											<option th:each="curso : ${lista_cursos}" th:value="${curso.id}"
 												th:text="${curso.nombre}">Curso</option>
 										</select>
@@ -192,7 +193,6 @@
 										<label for="federados">Federado</label>
 
 										<select class="form-control" id="federado" th:field="*{federado}">
-											<option value="">---</option>
 											<option th:each="federado : ${lista_federados}" th:value="${federado}"
 												th:text="${federado}">Federado </option>
 										</select>
@@ -204,7 +204,6 @@
 										<label for="cinturones">Cinturón</label>
 
 										<select class="form-control" id="cinturones" th:field="*{cinturon}">
-											<option value="">---</option>
 											<option th:each="cinturon : ${lista_cinturones}" th:value="${cinturon}"
 												th:text="${cinturon}">Cinturón </option>
 										</select>
@@ -222,7 +221,6 @@
 									<div class="form-group col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2">
 										<label for="provincia">Provincia</label>
 										<select required name="provincia" class="form-control" th:field="*{provincia}">
-											<option value="">---</option>
 											<option th:each="provincia : ${lista_provincias}" th:value="${provincia}"
 												th:text="${provincia}">Provincia</option>
 										</select>

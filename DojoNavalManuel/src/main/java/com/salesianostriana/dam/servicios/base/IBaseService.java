@@ -2,6 +2,10 @@ package com.salesianostriana.dam.servicios.base;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
+
+import com.salesianostriana.dam.modelo.Alumno;
+
 public interface IBaseService<T, ID> {
 
 	/**
@@ -43,5 +47,8 @@ public interface IBaseService<T, ID> {
 	 * @param id
 	 */
 	void deleteById(ID id);
+	
+	@Query("select a from Alumno a where a.curso.id = ?1")
+	public List<Alumno> findByCursoId(Long cursoId);
 
 }

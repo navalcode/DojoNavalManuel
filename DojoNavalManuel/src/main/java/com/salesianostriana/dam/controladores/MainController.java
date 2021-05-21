@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.modelo.Alumno;
 import com.salesianostriana.dam.modelo.Curso;
@@ -35,11 +36,29 @@ public class MainController {
 	 * @param model
 	 * @return index.html
 	 */
+	
+	
 	@GetMapping("/")
-	public String todosLosAlumnos(Model model) {
-		model.addAttribute("alumnos", servicio.findAll());
+	public String todosLosAlumnos(@RequestParam(name="idCurso", required=false) Long idCurso, Model model) {		
+		
+	
+		model.addAttribute("cursos", cursoServicio.findAll());
+		
+		List<Alumno> alumnos;
+	
+		
+		
+		if (idCurso == null) {
+			alumnos = servicio.findAll();
+		} else {			
+			alumnos= servicio.findByCursoId(idCurso);
+		}
+		
+		model.addAttribute("alumnos", alumnos);
+		
 		return "index";
 	}
+	
 
 	/**
 	 * Proxima funcionalidad, VER DETALLES, permitirá ver los detalles de un alumno
