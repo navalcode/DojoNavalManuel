@@ -10,7 +10,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+/**
+ * Esta clase genera una clase pojo que dará herencia a Alumno y Sensei.
+ * @author Manuel Naval
+ *
+ */
 @Data
 @NoArgsConstructor
 @MappedSuperclass

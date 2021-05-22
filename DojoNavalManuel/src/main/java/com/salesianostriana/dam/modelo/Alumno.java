@@ -13,7 +13,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
+/**
+ * Esta clase genera una entidad alumno que hereda los atributos de Persona, tiene una asociación ManyToOne con Curso
+ * @author Manuel Naval
+ *
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -32,7 +36,10 @@ public class Alumno extends Persona {
 
 
 
-	
+	/**
+	 * Este método calcula la edad del alumno comparandola con la fecah actual.
+	 * @return
+	 */
 
 	public long calcularEdad() {
 		return ChronoUnit.YEARS.between(this.getFechaNacimiento(), LocalDate.now());

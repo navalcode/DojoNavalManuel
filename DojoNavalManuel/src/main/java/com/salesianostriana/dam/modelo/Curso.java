@@ -18,7 +18,11 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
+/**
+ * Esta clase genera una entidad Curso con asociación ManyToOne hacia sensei y OneToMany hacia Alumno.
+ * @author Manuel Naval
+ *
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
