@@ -17,11 +17,10 @@
 	<!--Favicon-->
 	<link rel="shortcut icon" type="image/x-icon" href="img/black-belt.png">
 
-	<title>Inicio</title>
+	<title>Cursos</title>
 </head>
 
 <body>
-
 	<header>
 		<!--Menú hamburguesa-->
 		<div class="menu">
@@ -43,29 +42,32 @@
 		</div>
 		<div class="collapse col-12" id="navbarToggleExternalContent">
 			<div class="lista-m col-12">
-			<ul class="navbar-nav col-12">
-
+				<ul class="navbar-nav col-12">
 					<li class="nav-item">
-						<a class="nav-link" href=""><img  th:src="@{/img/karate (1).png}" alt="Administrador">
+						<a class="nav-link" href=""><img th:src="@{/img/karate (1).png}" alt="Administrador">
 							J.Cesar</a>
 						<p class="id_admin">cesarjul@gmail.com</p>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href="" th:href="@{/}"><img  th:src="@{/img/judo (1).png}" alt="Alumnos">Alumnos</a>
+						<a class="nav-link " href="" th:href="@{/}"><img th:src="@{/img/judo (1).png}"
+								alt="Alumnos">Alumnos</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href="" th:href="@{/senseis}"><img  th:src="@{/img/fight.png}" alt="Senseis">Senseis</a>
+						<a class="nav-link " href="" th:href="@{/senseis}"><img th:src="@{/img/fight.png}"
+								alt="Senseis">Senseis</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href="" th:href="@{/cursos}"><img th:src="@{/img/black-belt.png}" alt="Cursos">Cursos</a>
+						<a class="nav-link " href="" th:href="@{/cursos}"><img th:src="@{/img/black-belt.png}"
+								alt="Cursos">Cursos</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href=""><img th:src="@{/img/mount-fuji.png}" alt="excursiones">Excursiones</a>
+						<a class="nav-link " href=""><img th:src="@{/img/mount-fuji.png}"
+								alt="excursiones">Excursiones</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href=""><img th:src="@{/img/setting.png}" alt="configuración">Configuración</a>
+						<a class="nav-link " href=""><img th:src="@{/img/setting.png}"
+								alt="configuración">Configuración</a>
 					</li>
-
 				</ul>
 			</div>
 		</div>
@@ -79,13 +81,11 @@
 			<button type="button" class="reg-op btn">Filtrar</button>
 			<button type="button" class="reg-op btn">ordenar</button>
 		</div>
-
 	</div>
 	<!--Fin jumbotrón-->
-
 	<main class="container-fluid border rounded col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto main">
 		<h3>Cursos</h3>
-		<!--Modelo para representar un alumno-->
+		<!--Modelo para representar un curso-->
 		<div class="row">
 			<div class="mx-auto col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3 mt-4 mb-4" th:each="curso:${cursos}">
 
@@ -98,36 +98,25 @@
 							<p class="card-text w-100" th:text="'Precio: '+${curso.precio}+' €'"></p>
 							<p class="card-text w-100" th:text="'Sensei: '+${curso.sensei.nombre}"></p>
 						</div>
-					
-                         
-                    </div>
-<br>
-                    <!--Botones edición y eliminar-->
-                    <div class="botones">
-                          <a class="button editar btn" id="abrirFormulario"  
-                          th:href="@{/editarCurso/{id}(id=${curso.id})}">Editar</a>
-                    
-                           <a class="button eliminar btn"   
-                          th:href="@{/borrarCurso/{id}(id=${curso.id})}">Eliminar</a>
-                          
-                       
-                    </div>
-                </div>
+					</div>
+					<br>
+					<!--Botones edición y eliminar-->
+					<div class="botones">
+						<a class="button editar btn" id="abrirFormulario"
+							th:href="@{/editarCurso/{id}(id=${curso.id})}">Editar</a>
 
-            </div>
-			
-
-    </main>
-
-
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-        crossorigin="anonymous"></script>
-    <script src="js.js" defer></script>
+						<a class="button eliminar btn" th:href="@{/borrarCurso/{id}(id=${curso.id})}">Eliminar</a>
+					</div>
+				</div>
+			</div>
+	</main>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+		crossorigin="anonymous"></script>
+	<script src="js.js" defer></script>
 </body>
 
 </html>

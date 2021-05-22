@@ -1,8 +1,10 @@
 package com.salesianostriana.dam.modelo;
 
 import java.util.List;
+
 /**
- * Esta se trata de una clase auxiliar para proporcionar datos inmutables, en este caso una lista de tipos de federación. 
+ * Esta se trata de una clase auxiliar para proporcionar datos inmutables, en
+ * este caso una lista de tipos de federación.
  * 
  * @author Manuel Naval
  *
@@ -10,6 +12,6 @@ import java.util.List;
 public class DatosFederados {
 
 	public static List<String> lista_federados() {
-		return List.of("Si","No");
+		return List.of("Si", "No");
 	}
 }

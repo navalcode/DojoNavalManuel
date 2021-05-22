@@ -11,18 +11,16 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
 		integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 	<!--CSS propio-->
-	<link href="../../static/style.css" th:href="@{/style.css}"
-	rel="stylesheet" />
+	<link href="../../static/style.css" th:href="@{/style.css}" rel="stylesheet" />
 	<!--Iconos Bootstrap-->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
 	<!--Favicon-->
-	<link rel="shortcut icon" type="image/x-icon" href="img/black-belt.png" th:href="@{/img/black-belt.png}"  >
+	<link rel="shortcut icon" type="image/x-icon" href="img/black-belt.png" th:href="@{/img/black-belt.png}">
 
-	<title>Agregar Alumno</title>
+	<title>Agregar Curso</title>
 </head>
 
 <body>
-
 	<header>
 		<!--Menú hamburguesa-->
 		<div class="menu">
@@ -47,26 +45,30 @@
 				<ul class="navbar-nav col-12">
 
 					<li class="nav-item">
-						<a class="nav-link" href=""><img  th:src="@{/img/karate (1).png}" alt="Administrador">
+						<a class="nav-link" href=""><img th:src="@{/img/karate (1).png}" alt="Administrador">
 							J.Cesar</a>
 						<p class="id_admin">cesarjul@gmail.com</p>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href="" th:href="@{/}"><img  th:src="@{/img/judo (1).png}" alt="Alumnos">Alumnos</a>
+						<a class="nav-link " href="" th:href="@{/}"><img th:src="@{/img/judo (1).png}"
+								alt="Alumnos">Alumnos</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href="" th:href="@{/senseis}"><img  th:src="@{/img/fight.png}" alt="Senseis">Senseis</a>
+						<a class="nav-link " href="" th:href="@{/senseis}"><img th:src="@{/img/fight.png}"
+								alt="Senseis">Senseis</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href="" th:href="@{/cursos}"><img th:src="@{/img/black-belt.png}" alt="Cursos">Cursos</a>
+						<a class="nav-link " href="" th:href="@{/cursos}"><img th:src="@{/img/black-belt.png}"
+								alt="Cursos">Cursos</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href=""><img th:src="@{/img/mount-fuji.png}" alt="excursiones">Excursiones</a>
+						<a class="nav-link " href=""><img th:src="@{/img/mount-fuji.png}"
+								alt="excursiones">Excursiones</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href=""><img th:src="@{/img/setting.png}" alt="configuración">Configuración</a>
+						<a class="nav-link " href=""><img th:src="@{/img/setting.png}"
+								alt="configuración">Configuración</a>
 					</li>
-
 				</ul>
 			</div>
 		</div>
@@ -74,40 +76,35 @@
 	</header>
 	<!-- Jumbotrón-->
 	<div class="jumbotron-fluid col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto ">
-
 		<div class="botones">
-			 <a class="button reg-op btn" href="#" th:href="@{/cursos}">Volver</a>
+			<a class="button reg-op btn" href="#" th:href="@{/cursos}">Volver</a>
 		</div>
-
 	</div>
 	<!--Fin jumbotrón-->
-
 	<main class="container-fluid border rounded col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto main">
-
-
 		<div class="row">
 			<!--Modelo para representar un curso-->
 			<div class="mx-auto col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11 mt-4 mb-4">
 
 				<div class="card-body w-100">
-				   <div class="fotoPerfil">
-				   <h3>
-						<span th:text="${curso.id} ? 'Editar' : 'Nuevo'"></span> Curso </h3>
-                        <!--Resumen básico-->
-                        <div>
-                        </div>
-                    </div>
-
+					<div class="fotoPerfil">
+						<h3>
+							<span th:text="${curso.id} ? 'Editar' : 'Nuevo'"></span> Curso
+						</h3>
+						<!--Resumen básico-->
+						<div>
+						</div>
+					</div>
 					<!--Formulario-->
-
-					<form class="encendido" id="formulario" method="POST" action="#"  th:action="${curso.id != 0} ? @{/editarCursoSubmit} : @{/addCurso}"
-						th:object="${curso}">
+					<form class="encendido" id="formulario" method="POST" action="#"
+						th:action="${curso.id != 0} ? @{/editarCursoSubmit} : @{/addCurso}" th:object="${curso}">
 						<input type="hidden" th:field="*{id}" id="id" />
 						<!--Nombre,año y precio-->
 						<div class="row">
 							<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
 								<label for="nombre">Nombre</label>
-								<input required type="text" class="form-control" placeholder="Nombre" th:field="*{nombre}">
+								<input required type="text" class="form-control" placeholder="Nombre"
+									th:field="*{nombre}">
 							</div>
 							<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
 								<label for="anio">Año</label>
@@ -115,7 +112,8 @@
 							</div>
 							<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
 								<label for="precio">Precio</label>
-								<input required type="number" min="1" step="any" class="form-control" placeholder="precio" th:field="*{precio}">
+								<input required type="number" min="1" step="any" class="form-control"
+									placeholder="precio" th:field="*{precio}">
 							</div>
 						</div>
 						<!--Fila para asignar un sensei-->
@@ -129,27 +127,23 @@
 											<option th:each="sensei : ${senseis}" th:value="${sensei.id}"
 												th:text="${sensei.nombre}">Sensei</option>
 										</select>
-									</div></div></div></div>
-
-					
+									</div>
+								</div>
+							</div>
+						</div>
 						<button type="submit" name="enviar" value="Enviar" class="btn btn-primary">Guardar</button>
 					</form>
-
 				</div>
-
 			</div>
 		</div>
 	</main>
-
-
-
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 		crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
 		crossorigin="anonymous"></script>
-	<script src="js.js" th:src="@{/js.js}"  defer></script>
+	<script src="js.js" th:src="@{/js.js}" defer></script>
 </body>
 
 </html>

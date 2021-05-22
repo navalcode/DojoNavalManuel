@@ -12,14 +12,16 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
 /**
- * Esta clase genera una entidad Curso con asociación ManyToOne hacia sensei y OneToMany hacia Alumno.
+ * Esta clase genera una entidad Curso con asociación ManyToOne hacia sensei y
+ * OneToMany hacia Alumno.
+ * 
  * @author Manuel Naval
  *
  */
@@ -30,17 +32,17 @@ import lombok.ToString;
 public class Curso {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
 	private int anio;
 	private String nombre;
 	private double precio;
-	
+
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
-	    @ManyToOne(fetch = FetchType.EAGER)
-	    private Sensei sensei;
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Sensei sensei;
 
 	public Curso(int anio, String nombre, double precio) {
 		super();
@@ -77,7 +79,5 @@ public class Curso {
 		this.alumnos.remove(a);
 		a.setCurso(null);
 	}
-	
-	
 
 }

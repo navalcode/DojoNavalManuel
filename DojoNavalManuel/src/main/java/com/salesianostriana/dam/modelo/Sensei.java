@@ -4,19 +4,19 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
-
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
 /**
  * Esta clase genera una entidad Sensei con asociación OneToMany hacia curso.
+ * 
  * @author naval
  *
  */
@@ -51,18 +51,22 @@ public class Sensei extends Persona {
 				direccion, imagen, cinturon);
 		this.sueldo = sueldo;
 	}
-/**
- * Este método agrega un curso a la lista de cursos de un sensei.
- * @param c
- */
+
+	/**
+	 * Este método agrega un curso a la lista de cursos de un sensei.
+	 * 
+	 * @param c
+	 */
 	public void addCurso(Curso c) {
 		this.curso.add(c);
 		c.setSensei(this);
 	}
-/**
- * Este método elimina un curso de la lista de cursos de un sensei.
- * @param c
- */
+
+	/**
+	 * Este método elimina un curso de la lista de cursos de un sensei.
+	 * 
+	 * @param c
+	 */
 	public void removeCurso(Curso c) {
 		this.curso.remove(c);
 		c.setSensei(null);

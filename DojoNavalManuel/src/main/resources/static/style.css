@@ -4,13 +4,12 @@
     box-sizing: border-box;
 }
 
-
 body {
     width: 100%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-image: url(img/fondoDegradado.jpg);
     background-repeat: no-repeat;
-    background-size:     cover; 
+    background-size: cover;
     background-attachment: fixed;
 }
 
@@ -40,10 +39,9 @@ a:hover {
     color: #1b1b1b;
 }
 
-.nav-item{
+.nav-item {
     text-shadow: #0000004d 0px 3px 6px;
 }
-
 
 .nav-item:hover {
     background: #ffffff67;
@@ -51,10 +49,9 @@ a:hover {
     text-shadow: #0000004d 0px 3px 6px;
 }
 
-
 .logo img {
     width: 50px;
-    -webkit-filter:drop-shadow( #0000004d 0px 3px 6px);
+    -webkit-filter: drop-shadow( #0000004d 0px 3px 6px);
 }
 
 button img {
@@ -68,7 +65,7 @@ img {
 li a img {
     margin-left: 10px;
     margin-right: 50px;
-    -webkit-filter:drop-shadow( #0000004d 0px 3px 6px);
+    -webkit-filter: drop-shadow( #0000004d 0px 3px 6px);
 }
 
 header {
@@ -99,27 +96,27 @@ header {
     border: 1px transparent;
     border-radius: 10px;
     width: 125px;
-   
-}
-.reg-op h6{
-    margin-top: 5px;
-}
-.reg-op:hover{
-    background: #5e5d5d67;
-    color: #f1f1f1;
-    
-}
-.reg-op img{
-    width: 15px;
-    opacity: 50%;
-    
 }
 
-main{
+.reg-op h6 {
+    margin-top: 5px;
+}
+
+.reg-op:hover {
+    background: #5e5d5d67;
+    color: #f1f1f1;
+}
+
+.reg-op img {
+    width: 15px;
+    opacity: 50%;
+}
+
+main {
     margin-top: 10px;
 }
 
-.card-body{
+.card-body {
     background: #ffffff33;
     backdrop-filter: blur( 7.0px);
     border: 1px solid #fcfcfc5d;
@@ -127,39 +124,42 @@ main{
     box-shadow: #0000002d 0px 3px 6px;
 }
 
-.botones{
+.botones {
     display: flex;
     justify-content: space-around;
     margin-top: 10px;
 }
 
-.editar{
+.editar {
     background: #ffffff67;
     backdrop-filter: blur( 8.0px);
     border: 1px solid #fcfcfc5d;
     box-shadow: #0000004d 0px 3px 6px;
     border-radius: 10px;
-    font-weight:600;
+    font-weight: 600;
     font-size: 1.5em;
-    color:#1165F5;
+    color: #1165F5;
 }
-.editar:hover{
-    color:#1165F5;
+
+.editar:hover {
+    color: #1165F5;
     background: #5e5d5d67;
 }
-.eliminar{
+
+.eliminar {
     background: #ffffff67;
     backdrop-filter: blur( 8.0px);
     border: 1px solid #fcfcfc5d;
     box-shadow: #0000004d 0px 3px 6px;
     border-radius: 10px;
-    font-weight:600;
+    font-weight: 600;
     font-size: 1.5em;
-    color:#F50000;
+    color: #F50000;
 }
-.eliminar:hover{
+
+.eliminar:hover {
     background: #5e5d5d67;
-    color:#F50000;
+    color: #F50000;
 }
 
 .agregarFoto {
@@ -168,30 +168,32 @@ main{
     border: 1px solid #fcfcfc5d;
     box-shadow: #0000004d 0px 3px 6px;
     border-radius: 10px;
-    font-weight:600;
+    font-weight: 600;
     font-size: 0.7em;
 }
-.agregarFoto:hover{
+
+.agregarFoto:hover {
     background: #5e5d5d67;
     color: #f1f1f1;
 }
 
-.agregarFoto img{
+.agregarFoto img {
     width: 15px;
     opacity: 50%;
 }
-.fotoPerfil{
+
+.fotoPerfil {
     display: flex;
     justify-content: space-between;
 }
 
-.pack-imagen{
+.pack-imagen {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.imagen img{
+.imagen img {
     width: 80px;
     border-radius: 50%;
     border: 1px solid #ffffff00;
@@ -199,21 +201,23 @@ main{
     box-shadow: #0000004d 0px 3px 6px;
 }
 
-.fotoPerfil{
+.fotoPerfil {
     text-shadow: #0000004d 0px 3px 6px;
 }
 
-.main{
+.main {
     background: #ffffff27;
     backdrop-filter: blur( 8.0px);
     border: 1px solid #fcfcfc21;
     box-shadow: #0000004d 0px 3px 6px;
     border-radius: 10px;
 }
-.menuHamburguesa{
-    -webkit-filter:drop-shadow( #000000 1px 1px 2px);
+
+.menuHamburguesa {
+    -webkit-filter: drop-shadow( #000000 1px 1px 2px);
 }
-.form-group input,.form-group textarea,.form-group select,.form-group option{
+
+.form-group input, .form-group textarea, .form-group select, .form-group option {
     background-color: #ffffff15;
     backdrop-filter: blur( 5.0px);
     border: 1px solid #fcfcfc5d;
@@ -221,13 +225,10 @@ main{
     border-radius: 10px;
 }
 
-.encendido{
- display: inherit;
+.encendido {
+    display: inherit;
 }
-.apagado{
+
+.apagado {
     display: none;
 }
-
-
-
-  

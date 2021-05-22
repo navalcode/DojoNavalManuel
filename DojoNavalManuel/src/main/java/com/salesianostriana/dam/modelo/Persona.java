@@ -10,8 +10,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 /**
  * Esta clase genera una clase pojo que dará herencia a Alumno y Sensei.
+ * 
  * @author Manuel Naval
  *
  */
@@ -38,7 +40,7 @@ public class Persona {
 	private String direccion;
 	private String imagen;
 	private String cinturon;
-	
+
 	public Persona(String nombre, String apellido1, String apellido2, String email, String dni, String telefono,
 			LocalDate fechaNacimiento, String provincia, int codigoPostal, String municipio, String direccion,
 			String imagen, String cinturon) {
@@ -57,7 +59,5 @@ public class Persona {
 		this.imagen = imagen;
 		this.cinturon = cinturon;
 	}
-
-
 
 }

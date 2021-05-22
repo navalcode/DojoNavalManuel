@@ -8,13 +8,15 @@ import org.springframework.stereotype.Service;
 import com.salesianostriana.dam.modelo.Alumno;
 import com.salesianostriana.dam.repos.AlumnoRepository;
 import com.salesianostriana.dam.servicios.base.BaseService;
+
 /**
  * Esta clase genera un servicio que hereda de BaseService.
+ * 
  * @author Manuel Naval
  *
  */
 @Service
-public class AlumnoServicio extends BaseService<Alumno, Long, AlumnoRepository>{
+public class AlumnoServicio extends BaseService<Alumno, Long, AlumnoRepository> {
 	@Autowired
 	private AlumnoRepository repositorio;
 
@@ -24,7 +26,8 @@ public class AlumnoServicio extends BaseService<Alumno, Long, AlumnoRepository>{
 	}
 
 	/**
-	 * Este método sobreescribe al método findByCursoId devolviendo el método que se encuentra en AlumnoRepository.
+	 * Este método sobreescribe al método findByCursoId devolviendo el método que se
+	 * encuentra en AlumnoRepository.
 	 */
 	@Override
 	public List<Alumno> findByCursoId(Long cursoId) {
@@ -32,11 +35,4 @@ public class AlumnoServicio extends BaseService<Alumno, Long, AlumnoRepository>{
 		return repositorio.findByCursoId(cursoId);
 	}
 
-	
-	
-	}
-
-	
-
-	
-
+}

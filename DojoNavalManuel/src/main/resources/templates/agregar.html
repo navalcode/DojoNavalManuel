@@ -11,18 +11,16 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
 		integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 	<!--CSS propio-->
-	<link href="../../static/style.css" th:href="@{/style.css}"
-	rel="stylesheet" />
+	<link href="../../static/style.css" th:href="@{/style.css}" rel="stylesheet" />
 	<!--Iconos Bootstrap-->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
 	<!--Favicon-->
-	<link rel="shortcut icon" type="image/x-icon" href="img/black-belt.png" th:href="@{/img/black-belt.png}"  >
+	<link rel="shortcut icon" type="image/x-icon" href="img/black-belt.png" th:href="@{/img/black-belt.png}">
 
 	<title>Agregar Alumno</title>
 </head>
 
 <body>
-
 	<header>
 		<!--Menú hamburguesa-->
 		<div class="menu">
@@ -44,29 +42,32 @@
 		</div>
 		<div class="collapse col-12" id="navbarToggleExternalContent">
 			<div class="lista-m col-12">
-		<ul class="navbar-nav col-12">
-
+				<ul class="navbar-nav col-12">
 					<li class="nav-item">
-						<a class="nav-link" href=""><img  th:src="@{/img/karate (1).png}" alt="Administrador">
+						<a class="nav-link" href=""><img th:src="@{/img/karate (1).png}" alt="Administrador">
 							J.Cesar</a>
 						<p class="id_admin">cesarjul@gmail.com</p>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href="" th:href="@{/}"><img  th:src="@{/img/judo (1).png}" alt="Alumnos">Alumnos</a>
+						<a class="nav-link " href="" th:href="@{/}"><img th:src="@{/img/judo (1).png}"
+								alt="Alumnos">Alumnos</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href="" th:href="@{/senseis}"><img  th:src="@{/img/fight.png}" alt="Senseis">Senseis</a>
+						<a class="nav-link " href="" th:href="@{/senseis}"><img th:src="@{/img/fight.png}"
+								alt="Senseis">Senseis</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href="" th:href="@{/cursos}"><img th:src="@{/img/black-belt.png}" alt="Cursos">Cursos</a>
+						<a class="nav-link " href="" th:href="@{/cursos}"><img th:src="@{/img/black-belt.png}"
+								alt="Cursos">Cursos</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href=""><img th:src="@{/img/mount-fuji.png}" alt="excursiones">Excursiones</a>
+						<a class="nav-link " href=""><img th:src="@{/img/mount-fuji.png}"
+								alt="excursiones">Excursiones</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href=""><img th:src="@{/img/setting.png}" alt="configuración">Configuración</a>
+						<a class="nav-link " href=""><img th:src="@{/img/setting.png}"
+								alt="configuración">Configuración</a>
 					</li>
-
 				</ul>
 			</div>
 		</div>
@@ -76,60 +77,53 @@
 	<div class="jumbotron-fluid col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto ">
 
 		<div class="botones">
-			 <a class="button reg-op btn" href="#" th:href="@{/}">Volver</a>
-			 
-			
-			
-		
+			<a class="button reg-op btn" href="#" th:href="@{/}">Volver</a>
 		</div>
-
 	</div>
 	<!--Fin jumbotrón-->
-
 	<main class="container-fluid border rounded col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto main">
-
-
 		<div class="row">
 			<!--Modelo para representar un alumno-->
 			<div class="mx-auto col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11 mt-4 mb-4">
-
 				<div class="card-body w-100">
-				   <div class="fotoPerfil">
-				   <h3>
-						<span th:text="${alumno.id} ? 'Editar' : 'Nuevo'"></span> Alumno </h3>
-                        <!--Resumen básico-->
-                        <div>
-                            
-                        </div>
-                        <!--Imagen-->
-                        <div class="pack-imagen">
-                            <!--Imagen-->
-                        <div class="pack-imagen">
-                            <div class="imagen"><img src="img/usuario.png"
+					<div class="fotoPerfil">
+						<h3>
+							<span th:text="${alumno.id} ? 'Editar' : 'Nuevo'"></span> Alumno
+						</h3>
+						<!--Resumen básico-->
+						<div>
+						</div>
+						<!--Imagen-->
+						<div class="pack-imagen">
+							<!--Imagen-->
+							<div class="pack-imagen">
+								<div class="imagen"><img src="img/usuario.png"
 										th:src="${#strings.isEmpty(alumno.imagen)} ? @{/img/usuario.png} : ${alumno.imagen}"
-										class="img-responsive" alt="userprofile" /> </div>
-                        </div>
-                        </div>
-                    </div>
-
+										class="img-responsive" alt="userprofile" />
+								</div>
+							</div>
+						</div>
+					</div>
 					<!--Formulario-->
-
-					<form class="encendido" th:onsubmit="comprobarDni(this)" id="formulario" method="POST" action="#"  th:action="${alumno.id != 0} ? @{/editarSubmit} : @{/addAlumno}"
-						th:object="${alumno}">
+					<form class="encendido" th:onsubmit="comprobarDni(this)" id="formulario" method="POST" action="#"
+						th:action="${alumno.id != 0} ? @{/editarSubmit} : @{/addAlumno}" th:object="${alumno}">
 						<input type="hidden" th:field="*{id}" id="id" />
 						<!--Nombre y apellidos-->
 						<div class="row">
 							<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
 								<label for="nombre">Nombre</label>
-								<input required type="text" class="form-control" placeholder="Nombre" th:field="*{nombre}">
+								<input required type="text" class="form-control" placeholder="Nombre"
+									th:field="*{nombre}">
 							</div>
 							<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
 								<label for="Apellido1">Apellido 1</label>
-								<input required type="text" class="form-control" placeholder="Apellido1" th:field="*{apellido1}">
+								<input required type="text" class="form-control" placeholder="Apellido1"
+									th:field="*{apellido1}">
 							</div>
 							<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
 								<label for="Apellido2">Apellido 2</label>
-								<input required type="text" class="form-control" placeholder="Apellido2" th:field="*{apellido2}">
+								<input required type="text" class="form-control" placeholder="Apellido2"
+									th:field="*{apellido2}">
 							</div>
 						</div>
 						<!--fila unica hasta fecha-->
@@ -139,8 +133,9 @@
 								<div class="row">
 									<div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
 										<label for="fecha">DNI</label>
-										<input required type="text" id="dni" pattern="[0-9]{8}[A-Za-z]{1}" title="Debe introducir 8 números y una letra"
-										 class="form-control" placeholder="DNI" th:field="*{dni}">
+										<input required type="text" id="dni" pattern="[0-9]{8}[A-Za-z]{1}"
+											title="Debe introducir 8 números y una letra" class="form-control"
+											placeholder="DNI" th:field="*{dni}">
 									</div>
 									<div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
 										<label for="fecha">Teléfono </label>
@@ -165,7 +160,6 @@
 								</div>
 							</div>
 						</div>
-
 						<div class="row ">
 							<div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
 								<!--Curso y fecha Inscripción-->
@@ -197,7 +191,6 @@
 												th:text="${federado}">Federado </option>
 										</select>
 									</div>
-
 									<!--Cinturones -->
 									<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-6 ">
 
@@ -224,7 +217,6 @@
 											<option th:each="provincia : ${lista_provincias}" th:value="${provincia}"
 												th:text="${provincia}">Provincia</option>
 										</select>
-
 									</div>
 									<div class="form-group col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2">
 										<label for="nombre">Código Postal</label>
@@ -244,40 +236,30 @@
 								</div>
 							</div>
 						</div>
-
 						<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
 							<label for="nombre">Imagen</label>
-							<input type="url" class="form-control" placeholder="Inserte aquí la url de su imagen (Ratio 1x1)"
-								th:field="${alumno.imagen}">
-						
+							<input type="url" class="form-control"
+								placeholder="Inserte aquí la url de su imagen (Ratio 1x1)" th:field="${alumno.imagen}">
 						</div>
-
 						<!--Comentarios-->
 						<div class="form-group">
 							<label for="comentarios">Comentarios</label>
 							<textarea required class="form-control" id="comentarios" rows="3"
 								th:field="*{comentarios}"></textarea>
 						</div>
-
-
 						<button type="submit" name="enviar" value="Enviar" class="btn btn-primary">Guardar</button>
 					</form>
-
 				</div>
-
 			</div>
 		</div>
 	</main>
-
-
-
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 		crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
 		crossorigin="anonymous"></script>
-	<script src="js.js" th:src="@{/js.js}"  defer></script>
+	<script src="js.js" th:src="@{/js.js}" defer></script>
 </body>
 
 </html>
