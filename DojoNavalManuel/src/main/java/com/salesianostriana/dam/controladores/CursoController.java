@@ -17,6 +17,11 @@ import com.salesianostriana.dam.servicios.SenseiServicio;
 
 import lombok.RequiredArgsConstructor;
 
+/**
+ * Este método controla las vistas relacionadas con los cursos.
+ * @author naval
+ *
+ */
 @Controller
 @RequiredArgsConstructor
 public class CursoController {
@@ -30,6 +35,11 @@ public class CursoController {
 	@Autowired
 	private AlumnoServicio alumnoServicio;
 
+	/**
+	 * Este método permite visualizar todos los cursos existentes
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/cursos")
 	public String todosLosCursos(Model model) {
 		model.addAttribute("cursos", servicio.findAll());
@@ -38,6 +48,11 @@ public class CursoController {
 		return "cursos";
 	}
 	
+	/**
+	 * Este método nos redirige a un formulario para crear un nuevo curso.
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/nuevoCurso")
 	public String formularioCurso(Model model) {
 		model.addAttribute("curso", new Curso());
@@ -45,12 +60,25 @@ public class CursoController {
 		return "agregarCurso";
 	}
 	
+	/**
+	 * Este método guarda en la base de datos un curso con los datos proporcionados en el formulario
+	 * @param curso
+	 * @param model
+	 * @return
+	 */
 	@PostMapping("/addCurso")
 	public String submitCurso(@ModelAttribute("curso") Curso curso, Model model) {
 		servicio.save(curso);
 		return "redirect:/cursos";
 	}
 	
+	/**
+	 * Este método nos redirige a un formulario proporcionando el id de un curso, de forma que dicho formulario
+	 * se rellene total o parcialmente con los datos del curso con dicho id.
+	 * @param id
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/editarCurso/{id}")
 	public String editarCurso(@PathVariable("id") Long id, Model model) {
 		
@@ -66,12 +94,24 @@ public class CursoController {
 		
 	}
 	
+	/**
+	 * Este método se encarga de cuardar los cambios realizados sobre un formualrio de edición correspondiente a un curso.
+	 * @param c
+	 * @return
+	 */
 	@PostMapping("/editarCursoSubmit")
 	public String guardarEdicionCurso(@ModelAttribute("curso") Curso c) {
 		servicio.edit(c);
 		return "redirect:/cursos";
 	}
 	
+	/**
+	 * Este método comprueba si un curso con un determinado id es nulo y si está vacío, si es así lo borra, en caso contrario
+	 * muestra una vista de error advirtiendo de que el curso contiene alumnos, y primero debemos eliminarlos.
+	 * @param id
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/borrarCurso/{id}")
 public String borrarCurso(@PathVariable("id") Long id, Model model) {
 		

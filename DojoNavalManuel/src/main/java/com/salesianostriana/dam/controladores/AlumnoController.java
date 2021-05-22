@@ -19,7 +19,11 @@ import com.salesianostriana.dam.servicios.AlumnoServicio;
 import com.salesianostriana.dam.servicios.CursoServicio;
 
 import lombok.RequiredArgsConstructor;
-
+/**
+ * Esta clase se encarga de controlar las vistas para los alumnos
+ * @author Manuel Naval
+ *
+ */
 @Controller
 @RequiredArgsConstructor
 public class AlumnoController {
@@ -30,6 +34,12 @@ public class AlumnoController {
 	@Autowired
 	private CursoServicio cursoServicio;
 	
+	/**
+	 * Este método redirige a la vista detalleAlumnos o a la pagina principal en caso de que el alumno sea nulo.
+	 * @param id
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/detalleAlumnos/{id}")
 	public String verAlumno(@PathVariable("id") Long id, Model model) {
 
@@ -94,12 +104,23 @@ public class AlumnoController {
 		}
 		
 	}
-	
+	 /**
+	  * Este método edita el alumno con los nuevos datos tomados del formulario.
+	  * @param a
+	  * @return
+	  */
 	@PostMapping("/editarSubmit")
 	public String guardarEdicionAlumno(@ModelAttribute("alumno") Alumno a) {
 		servicio.edit(a);
 		return "redirect:/";
 	}
+	
+	/**
+	 * Este método borra un alumno dado su id.
+	 * @param id
+	 * @param model
+	 * @return
+	 */
 	
 	@GetMapping("/borrarAlumno/{id}")
 	public String borrarAlumno(@PathVariable("id") Long id, Model model) {
@@ -114,21 +135,40 @@ public class AlumnoController {
 
 	}
 
+	/**
+	 * Este método permite acceder a los cursos existentes en la base de datos. 
+	 * @return
+	 */
 	@ModelAttribute("lista_cursos")
 	public List<Curso> cursos() {
 		return cursoServicio.findAll();
 	}
 
+	/**
+	 * Este método permite acceder a una lista de tipos de cinturones existentes en la clase DatosCinturones,
+	 * estos datos no pertenencen a una entidad , es una lista constante. 
+	 * @return
+	 */
 	@ModelAttribute("lista_cinturones")
 	public List<String> tiposCinturones() {
 		return DatosCinturones.lista_cinturones();
 	}
-
+	
+	/**
+	 * Este método permite acceder a una lista de tipos de provincias existentes en la clase DatosProvincias,
+	 * estos datos no pertenencen a una entidad , es una lista constante. 
+	 * @return
+	 */
 	@ModelAttribute("lista_provincias")
 	public List<String> tiposProvincias() {
 		return DatosProvincias.lista_provincias();
 	}
 
+	/**
+	 * Este método permite acceder a una lista de tipos de federaciones existentes en la clase DatosFederados,
+	 * estos datos no pertenencen a una entidad , es una lista constante. 
+	 * @return
+	 */
 	@ModelAttribute("lista_federados")
 	public List<String> tiposFederados() {
 		return DatosFederados.lista_federados();

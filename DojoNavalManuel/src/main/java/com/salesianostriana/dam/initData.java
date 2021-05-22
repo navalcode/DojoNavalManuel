@@ -14,7 +14,11 @@ import com.salesianostriana.dam.servicios.CursoServicio;
 import com.salesianostriana.dam.servicios.SenseiServicio;
 
 import lombok.RequiredArgsConstructor;
-
+/**
+ * Está clase permite agregar datos de forma manual a la base de datos
+ * @author Manuel Naval
+ *
+ */
 @Component
 @RequiredArgsConstructor
 public class initData {
