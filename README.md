@@ -10,7 +10,7 @@ el proyecto a sus funciones básicas, concretamente se manejan 3 entidades, Alum
 Editar, Eliminar. Para Alumno se añaden además las funciones de filtrar por curso y la ordenación alfabéticamente y por fecha de nacimiento, junto con la posibilidad
 de ver todos los detalles sin necesidad de entrar en el formulario de edición._
 
-### Futuras mejoras 📋
+### Futuras mejoras 💡
 
 _Sin tener en cuenta la ampliación de entidades hay una serie de mejoras suculentas que podríamos aplicar al proyecto_
 
