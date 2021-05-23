@@ -33,7 +33,7 @@ larguísimo etcetera de las necesidades que engloban un dojo se deberían acabar
 ###### Aspecto visual.
 
 _Si bien la interfaz de usuario está pensada para tratar de ser lo más simple e intuitiva es posible que el aspecto gráfico no este del todo refinado, se podrían redimensionar
-algunos botonoes e iconos, gestionar mejor el tamaño de la plantilla que muestra la información detallada del alumno, así como facilitar su lectura. _
+algunos botonoes e iconos, gestionar mejor el tamaño de la plantilla que muestra la información detallada del alumno, así como facilitar su lectura._
 
 ## Pruebas ⚙️
 
