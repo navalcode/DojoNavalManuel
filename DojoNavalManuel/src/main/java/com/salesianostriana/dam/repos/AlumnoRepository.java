@@ -26,4 +26,22 @@ public interface AlumnoRepository extends JpaRepository<Alumno, Long> {
 	@Query("select a from Alumno a where a.curso.id = ?1")
 	public List<Alumno> findByCursoId(Long cursoId);
 
+	/**
+	 * Este método realiza una consulta a la base de datos que devuelve todos los
+	 * alumnos ordenados alfabéticamente por nombre.
+	 * 
+	 * @return
+	 */
+	@Query("select a from Alumno a order by a.nombre")
+	public List<Alumno> findAllSorted();
+
+	/**
+	 * Este método realiza una consulta a la base de datos que devuelve todos los
+	 * alumnos ordenados de menor a mayor edad.
+	 * 
+	 * @return
+	 */
+	@Query("select a from Alumno a order by a.fechaNacimiento desc")
+	public List<Alumno> findAllSortedEdad();
+
 }

@@ -143,6 +143,39 @@ public class AlumnoController {
 	}
 
 	/**
+	 * Este método muestra los alumnos ordenados alfabéticamente mediante una
+	 * consulta a la base de datos.
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("/ordenarAlfabeticamente")
+	public String alumnosAlfabeticamente(Model model) {
+		model.addAttribute("cursos", cursoServicio.findAll());
+		List<Alumno> alumnos;
+		alumnos = servicio.findAllSorted();
+		model.addAttribute("alumnos", alumnos);
+
+		return "alumnosOrdenados";
+	}
+
+	/**
+	 * Este método muestra los alumnos ordenados por edad ascendente mediante una
+	 * consulta a la base de datos.
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("ordenarEdad")
+	public String alumnosEdad(Model model) {
+		model.addAttribute("cursos", cursoServicio.findAll());
+		List<Alumno> alumnos;
+		alumnos = servicio.findAllSortedEdad();
+		model.addAttribute("alumnos", alumnos);
+		return "alumnosOrdenadosEdad";
+	}
+
+	/**
 	 * Este método permite acceder a los cursos existentes en la base de datos.
 	 * 
 	 * @return

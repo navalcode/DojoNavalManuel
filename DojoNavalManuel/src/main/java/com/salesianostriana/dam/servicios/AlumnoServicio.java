@@ -26,13 +26,34 @@ public class AlumnoServicio extends BaseService<Alumno, Long, AlumnoRepository> 
 	}
 
 	/**
-	 * Este método sobreescribe al método findByCursoId devolviendo el método que se
-	 * encuentra en AlumnoRepository.
+	 * Este método realiza una consulta a la base de datos que devuelve una lista
+	 * con todos los alumnos con el mismo id de curso.
 	 */
-	@Override
+
 	public List<Alumno> findByCursoId(Long cursoId) {
 		// TODO Auto-generated method stub
 		return repositorio.findByCursoId(cursoId);
+	}
+
+	/**
+	 * Este método realiza una consulta a la base de datos que devuelve todos los
+	 * alumnos ordenados alfabéticamente por nombre.
+	 * 
+	 * @return
+	 */
+	public List<Alumno> findAllSorted() {
+		return repositorio.findAllSorted();
+	}
+
+	/**
+	 * Este método realiza una consulta a la base de datos que devuelve todos los
+	 * alumnos ordenados de menor a mayor edad.
+	 * 
+	 * @return
+	 */
+	public List<Alumno> findAllSortedEdad() {
+		// TODO Auto-generated method stub
+		return repositorio.findAllSortedEdad();
 	}
 
 }

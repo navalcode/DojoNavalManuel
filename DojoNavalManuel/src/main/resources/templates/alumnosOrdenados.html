@@ -17,7 +17,7 @@
 	<!--Favicon-->
 	<link rel="shortcut icon" type="image/x-icon" href="img/black-belt.png">
 
-	<title>Inicio</title>
+	<title>Alumnos Ordenados</title>
 </head>
 
 <body>
@@ -76,25 +76,14 @@
 	<!-- Jumbotrón-->
 	<div class="jumbotron-fluid col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto ">
 		<div class="botones">
-			<a class="button reg-op btn" href="#" th:href="@{/nuevo}">Agregar</a>
-			<button class=" button reg-op btn dropdown-toggle" type="button" id="dropdownMenuButton"
-				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Filtrar
-			</button>
-			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				<a class="dropdown-item" th:href="@{/}">Todos</a>
-				<a class="dropdown-item" th:each="curso : ${cursos}" th:href="@{/?(idCurso=${curso.id})}"
-					th:text="${curso.nombre}">Curso</a>
-			</div>
+		
+			<a class ="dropdown-item reg-op btn" th:text="'Volver'" th:href="@{/}">Volver</a>
 			
-			<a class =" reg-op btn" th:text="'Alfabéticamente'" th:href="@{/ordenarAlfabeticamente}">Ordenar por Nombre</a>
-						<a class =" reg-op btn" th:text="'Edad'" th:href="@{/ordenarEdad}">Ordenar por Edad</a>
-
 		</div>
 	</div>
 	<!--Fin jumbotrón-->
 	<main class="container-fluid border rounded col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto main">
-		<h3>Alumnos</h3>
+		<h3>Alumnos ordenados alfabéticamente</h3>
 		<!--Modelo para representar un alumno-->
 		<div class="row ">
 			<div class="mx-auto col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3 mt-4 mb-4" th:each="alumno:${alumnos}">

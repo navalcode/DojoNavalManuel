@@ -1,6 +1,6 @@
 package com.salesianostriana.dam.servicios.base;
 
-import java.util.List;
+import java.util.List; 
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -84,5 +84,6 @@ public abstract class BaseService<T, ID, R extends JpaRepository<T, ID>> impleme
 	public void deleteById(ID id) {
 		repositorio.deleteById(id);
 	}
+
 
 }
