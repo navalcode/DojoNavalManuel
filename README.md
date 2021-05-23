@@ -11,6 +11,7 @@ Editar, Eliminar. Para Alumno se añaden además las funciones de filtrar por cu
 de ver todos los detalles sin necesidad de entrar en el formulario de edición._
 
 ### Futuras mejoras 📋
+
 _Sin tener en cuenta la ampliación de entidades hay una serie de mejoras suculentas que podríamos aplicar al proyecto_
 
 ###### Asignación de cursos automática por edad.
@@ -20,14 +21,17 @@ de los 15 años todos son considerados adultos (principalmente porque es más se
 Esta asignación debería ser automatica en el futuro dependiendo de la edad, ahora mismo se puede realizar solo bajo edición con el formulario._
 
 ###### Ascenso a Sensei.
+
 _Aquella frase de alumno es el maestro ahora, suele ser muy común en karate, llegados a cierto grados los alumnos pueden ser Sensei, esta conversión debería poder hacerse 
 sin perder los datos del alumno._
 
 ###### Lógica de negocio.
+
 _Tanto la gestión de la ecónomia, mensualidades, gastos de electricidad, agua, fungibles, la gestion de materiales como armas de prácticas, protecciones, cinturones... Y un 
 larguísimo etcetera de las necesidades que engloban un dojo se deberían acabar introduciendo en un futuro para que la aplicación fuera realmente útil._
 
 ###### Aspecto visual.
+
 _Si bien la interfaz de usuario está pensada para tratar de ser lo más simple e intuitiva es posible que el aspecto gráfico no este del todo refinado, se podrían redimensionar
 algunos botonoes e iconos, gestionar mejor el tamaño de la plantilla que muestra la información detallada del alumno, así como facilitar su lectura. _
 
@@ -39,6 +43,6 @@ Para ver más detalles sobre las pruebas puedes ver el documento PruebasDojo.pdf
 
 ## Autor ✒️
 
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
+
 
 * **Manuel Naval** - *Proyecto Dojo Sakura* - [navalcode](https://github.com/navalcode)
