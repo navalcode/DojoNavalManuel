@@ -1,6 +1,7 @@
 # Dojo Sakura
 
 _Proyecto final 1º DAM _
+_Repositorio público desde 28/09/2021_
 
 ## Comenzando 📋
 
