@@ -1,13 +1,21 @@
-<!-- navalcode:historical-context -->
-**Historical learning project · Proyecto histórico de aprendizaje**
+# Dojo Sakura
 
-Java dojo-management project from DAM coursework. This presentation update does not claim a current build or production readiness. Original documentation and attribution are retained below when present.
+[English](#overview) · [Español](#resumen)
 
-**Español.** Proyecto Java de gestión de un dojo realizado durante los estudios DAM. Esta actualización de presentación no acredita compilación actual ni uso en producción. Se conserva la documentación y atribución originales cuando existen.
+## Overview
 
-[Current mobile portfolio / Portfolio móvil actual](https://passkeys.navalcode.org/portfolio/) · [GitHub profile](https://github.com/navalcode)
+Java dojo-management project from DAM coursework.
 
----
+An earlier learning exercise. The source is preserved with its original toolchain; compatibility with current versions has not been revalidated.
+
+## Resumen
+
+Proyecto Java de gestión de un dojo realizado durante los estudios DAM.
+
+Ejercicio de una etapa anterior de aprendizaje. Se conserva con sus herramientas originales; no se ha vuelto a validar con versiones actuales.
+
+<details>
+<summary>Original documentation and credits · Documentación y créditos originales</summary>
 
 # Dojo Sakura
 
@@ -59,3 +67,7 @@ Para ver más detalles sobre las pruebas puedes ver el documento PruebasDojo.pdf
 
 
 * **Manuel Naval** - *Proyecto Dojo Sakura* - [navalcode](https://github.com/navalcode)
+
+</details>
+
+[More of my work · Más proyectos](https://github.com/navalcode)
