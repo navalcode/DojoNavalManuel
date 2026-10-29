@@ -1,18 +1,67 @@
-# Dojo Sakura
+# Dojo: records and forms
 
-[English](#overview) · [Español](#resumen)
+[Español](README.es.md) · [More work](https://github.com/navalcode)
 
 ## Overview
 
-Java dojo-management project from DAM coursework.
+A revised DAM coursework application for students, courses and instructors, with server-rendered Thymeleaf pages and **28 local tests**: the original context, 23 MVC/JPA journeys and four graph contracts. This remains a learning project, with its original attribution and toolchain.
 
-An earlier learning exercise. The source is preserved with its original toolchain; compatibility with current versions has not been revalidated.
+The interface uses local Outfit, paper/ink/copper colors, open roster rows and labeled forms. Spanish is the default, with complete English resources. Mobile filters use a native disclosure; without JavaScript, filters and forms remain available. The interface supports combined course filtering and age/name order, student detail, and creating/editing all three entity types.
+
+<img src="docs/images/students-en-desktop.png" alt="Actual English Dojo directory, six fictional students, captured from the local packaged application" width="800">
+
+## Run
+
+JDK 17 was used for verification; the POM still targets Java 11. From the repository root:
+
+```sh
+cd DojoNavalManuel
+sh ./mvnw verify
+java -jar target/dojonavalmanuel-0.0.1-SNAPSHOT.jar
+```
+
+Tomcat prints the assigned port. Open that loopback URL in a browser. The default H2 database is memory-only and resets when the process stops. The demo seeds six fictional students, two courses and two instructors; contacts use example.invalid and no photos are loaded initially.
+
+File persistence is an explicit opt-in. From the same module directory:
+
+```sh
+mkdir -p demo-data
+java -jar target/dojonavalmanuel-0.0.1-SNAPSHOT.jar '--spring.datasource.url=jdbc:h2:file:./demo-data/dojo;DB_CLOSE_ON_EXIT=FALSE'
+```
+
+An isolated create/stop/restart check retained an added record and did not duplicate the seed. The original user database path is never opened by default. `DOJO_DATABASE_URL` and `DOJO_PORT` are optional configuration alternatives.
+
+## Behavior worth reviewing
+
+| Action | Result |
+|---|---|
+| Create/edit from the visible forms | Validates before writing; errors preserve entered values |
+| Change language while editing | Posts the draft for translation without saving it |
+| GET a deletion URL | Read-only confirmation; cancel preserves the record |
+| Confirm deletion with POST | Requires the form token and session; removes only an eligible record |
+| Delete a course/instructor still referenced | 409 with an explanation and a route back |
+| Open a missing record | 404 recovery page |
+| Missing/invalid form token | 403 recovery page, without a second rejection of the error dispatch |
+
+New input models use English field names rather than binding entities directly. Historical navigation URLs remain; old programmatic form submissions need the new fields and token. Optional contact fields are not required. An explicitly entered image URL can load a remote image; no external photo/icon/font service is part of the seeded experience.
+
+Read [the MVC/JPA journeys](DojoNavalManuel/src/test/java/com/salesianostriana/dam/DojoHttpJourneyTest.java), then [DojoService](DojoNavalManuel/src/main/java/com/salesianostriana/dam/web/DojoService.java). Tests reload repositories after requests without an enclosing test transaction. Graph contracts cover ownership transfer, repeated attachment and wrong-owner removal. Course/instructor deletion retains referential integrity; monetary input is bounded, but the historical model still stores double values.
+
+<img src="docs/images/students-es-mobile.png" alt="Actual Spanish directory on a 360 pixel viewport, with collapsed filters and a complete student row" width="260"> <img src="docs/images/form-es-mobile-error.png" alt="Actual Spanish validation error on a mobile form, retaining the fictional surname Demo" width="260">
+
+## Verification and limits
+
+Maven verify passed 28 tests with no failures/errors/skips on JDK 17/macOS. A packaged JAR was also checked over actual HTTP, including both languages, routes, local asset bytes, confirmation and styled errors; optional file persistence was checked across restart. Browser review covered 1366×768, 360×800 and 800×360, keyboard skip link, create/reload/edit, draft language change and combined filters. Captures are real application pixels, not generated concepts. [Recorded results](docs/verification.json).
+
+No new hosted CI was added. Spring Boot 2.4.5 and the existing Maven wrapper remain pinned; this is not an authenticated production management system. Formal screen-reader/WCAG auditing, physical devices and deployment are not claimed. [Design decisions](DESIGN.md) · [Components and attribution](THIRD_PARTY.md).
 
 ## Resumen
 
-Proyecto Java de gestión de un dojo realizado durante los estudios DAM.
+[La versión española completa](README.es.md) describe los mismos contratos, comandos y límites.
 
-Ejercicio de una etapa anterior de aprendizaje. Se conserva con sus herramientas originales; no se ha vuelto a validar con versiones actuales.
+## Original notes
+
+Historical notes and credits are retained verbatim below; the reviewed behavior and commands above take precedence.
 
 <details>
 <summary>Original documentation and credits · Documentación y créditos originales</summary>
@@ -69,5 +118,3 @@ Para ver más detalles sobre las pruebas puedes ver el documento PruebasDojo.pdf
 * **Manuel Naval** - *Proyecto Dojo Sakura* - [navalcode](https://github.com/navalcode)
 
 </details>
-
-[More of my work · Más proyectos](https://github.com/navalcode)

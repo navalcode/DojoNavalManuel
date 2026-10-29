@@ -1,265 +1,304 @@
-<!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
-
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="viewport"
-		content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-	<!--Bootstrap-->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-		integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-	<!--CSS propio-->
-	<link href="../../static/style.css" th:href="@{/style.css}" rel="stylesheet" />
-	<!--Iconos Bootstrap-->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
-	<!--Favicon-->
-	<link rel="shortcut icon" type="image/x-icon" href="img/black-belt.png" th:href="@{/img/black-belt.png}">
-
-	<title>Agregar Alumno</title>
-</head>
-
-<body>
-	<header>
-		<!--Menú hamburguesa-->
-		<div class="menu">
-			<nav class="navbar navbar-dark ">
-				<div class="container-fluid">
-					<button class="navbar-toggler float-left" type="button" data-toggle="collapse"
-						data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-						aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon rounded menuHamburguesa"></span>
-					</button>
-					<div class="logo mx-auto ">
-						<a href="#"><img src="img/sakura.svg" th:src="@{/img/sakura.svg}" alt="Sakura"></a>
-					</div>
-					<div class=" float-right ">
-						<a href=""><img src="img/logout.png" th:src="@{/img/logout.png}" alt="LogOut"></a>
-					</div>
-				</div>
-			</nav>
-		</div>
-		<div class="collapse col-12" id="navbarToggleExternalContent">
-			<div class="lista-m col-12">
-				<ul class="navbar-nav col-12">
-					<li class="nav-item">
-						<a class="nav-link" href=""><img th:src="@{/img/karate (1).png}" alt="Administrador">
-							J.Cesar</a>
-						<p class="id_admin">cesarjul@gmail.com</p>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link " href="" th:href="@{/}"><img th:src="@{/img/judo (1).png}"
-								alt="Alumnos">Alumnos</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link " href="" th:href="@{/senseis}"><img th:src="@{/img/fight.png}"
-								alt="Senseis">Senseis</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link " href="" th:href="@{/cursos}"><img th:src="@{/img/black-belt.png}"
-								alt="Cursos">Cursos</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link " href=""><img th:src="@{/img/mount-fuji.png}"
-								alt="excursiones">Excursiones</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link " href=""><img th:src="@{/img/setting.png}"
-								alt="configuración">Configuración</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<!--Menú hamburguesa fin-->
-	</header>
-	<!-- Jumbotrón-->
-	<div class="jumbotron-fluid col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto ">
-
-		<div class="botones">
-			<a class="button reg-op btn" href="#" th:href="@{/}">Volver</a>
-		</div>
-	</div>
-	<!--Fin jumbotrón-->
-	<main class="container-fluid border rounded col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto main">
-		<div class="row">
-			<!--Modelo para representar un alumno-->
-			<div class="mx-auto col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11 mt-4 mb-4">
-				<div class="card-body w-100">
-					<div class="fotoPerfil">
-						<h3>
-							<span th:text="${alumno.id} ? 'Editar' : 'Nuevo'"></span> Alumno
-						</h3>
-						<!--Resumen básico-->
-						<div>
-						</div>
-						<!--Imagen-->
-						<div class="pack-imagen">
-							<!--Imagen-->
-							<div class="pack-imagen">
-								<div class="imagen"><img src="img/usuario.png"
-										th:src="${#strings.isEmpty(alumno.imagen)} ? @{/img/usuario.png} : ${alumno.imagen}"
-										class="img-responsive" alt="userprofile" />
-								</div>
-							</div>
-						</div>
-					</div>
-					<!--Formulario-->
-					<form class="encendido" th:onsubmit="comprobarDni(this)" id="formulario" method="POST" action="#"
-						th:action="${alumno.id != 0} ? @{/editarSubmit} : @{/addAlumno}" th:object="${alumno}">
-						<input type="hidden" th:field="*{id}" id="id" />
-						<!--Nombre y apellidos-->
-						<div class="row">
-							<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-								<label for="nombre">Nombre</label>
-								<input required type="text" class="form-control" placeholder="Nombre"
-									th:field="*{nombre}">
-							</div>
-							<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-								<label for="Apellido1">Apellido 1</label>
-								<input required type="text" class="form-control" placeholder="Apellido1"
-									th:field="*{apellido1}">
-							</div>
-							<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-								<label for="Apellido2">Apellido 2</label>
-								<input required type="text" class="form-control" placeholder="Apellido2"
-									th:field="*{apellido2}">
-							</div>
-						</div>
-						<!--fila unica hasta fecha-->
-						<div class="row ">
-							<div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-								<!--Dni y teléfono-->
-								<div class="row">
-									<div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-										<label for="fecha">DNI</label>
-										<input required type="text" id="dni" pattern="[0-9]{8}[A-Za-z]{1}"
-											title="Debe introducir 8 números y una letra" class="form-control"
-											placeholder="DNI" th:field="*{dni}">
-									</div>
-									<div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-										<label for="fecha">Teléfono </label>
-										<input required type="text" class="form-control" pattern="[0-9]{9}" placeholder="Teléfono"
-											th:field="*{telefono}">
-									</div>
-								</div>
-							</div>
-							<div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
-								<!--Email y fecha de nacimiento-->
-								<div class="row">
-									<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-6 ">
-										<label for="fecha">Correo electrónico</label>
-										<input required type="email" class="form-control" id="email"
-											placeholder="Correo electrónico" th:field="*{email}">
-									</div>
-									<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-6 ">
-										<label for="fecha"> Fecha de nacimiento</label>
-										<input required type="date" class="form-control" id="fecha"
-											placeholder="Fecha de nacimiento" th:field="*{fechaNacimiento}">
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="row ">
-							<div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-								<!--Curso y fecha Inscripción-->
-								<div class="row">
-									<div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-										<label for="curso">Curso</label>
-										<select required class="form-control" id="curso" th:field="*{curso}">
-											<option th:each="curso : ${lista_cursos}" th:value="${curso.id}"
-												th:text="${curso.nombre}">Curso</option>
-										</select>
-									</div>
-									<div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-										<label for="fechaIns"> Fecha de Inscripción</label>
-										<input required type="date" class="form-control" id="fechaIns"
-											placeholder="Fecha de Inscripción" th:field="*{fechaInscripcion}">
-									</div>
-								</div>
-							</div>
-							<div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
-								<!--Federado y Cinturón-->
-								<div class="row">
-									<!-- RadioButton Federado -->
-									<div class="form-group col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-auto">
-
-										<label for="federados">Federado</label>
-
-										<select required class="form-control" id="federado" th:field="*{federado}">
-											<option th:each="federado : ${lista_federados}" th:value="${federado}"
-												th:text="${federado}">Federado </option>
-										</select>
-									</div>
-									<!--Cinturones -->
-									<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-6 ">
-
-										<label for="cinturones">Cinturón</label>
-
-										<select required class="form-control" id="cinturones" th:field="*{cinturon}">
-											<option th:each="cinturon : ${lista_cinturones}" th:value="${cinturon}"
-												th:text="${cinturon}">Cinturón </option>
-										</select>
-
-									</div>
-								</div>
-							</div>
-						</div>
-						<!--Dirección-->
-						<div class="row">
-							<div class="col-12 ">
-
-								<div class="row">
-									<!-- Provincias -->
-									<div class="form-group col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2">
-										<label for="provincia">Provincia</label>
-										<select required name="provincia" class="form-control" th:field="*{provincia}">
-											<option th:each="provincia : ${lista_provincias}" th:value="${provincia}"
-												th:text="${provincia}">Provincia</option>
-										</select>
-									</div>
-									<div class="form-group col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2">
-										<label for="nombre">Código Postal</label>
-										<input required type="text" class="form-control" placeholder="CP"
-											th:field="*{codigoPostal}">
-									</div>
-									<div class="form-group col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2">
-										<label for="nombre">Municipio</label>
-										<input required type="text" class="form-control" placeholder="Municipio"
-											th:field="*{municipio}">
-									</div>
-									<div class="form-group col-12 col-sm-12 col-md-3 col-lg-6 col-xl-6">
-										<label for="nombre">Dirección</label>
-										<input required type="text" class="form-control" placeholder="Dirección"
-											th:field="*{direccion}">
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="form-group col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-							<label for="nombre">Imagen</label>
-							<input type="url" class="form-control"
-								placeholder="Inserte aquí la url de su imagen (Ratio 1x1)" th:field="${alumno.imagen}">
-						</div>
-						<!--Comentarios-->
-						<div class="form-group">
-							<label for="comentarios">Comentarios</label>
-							<textarea required class="form-control" id="comentarios" rows="3"
-								th:field="*{comentarios}"></textarea>
-						</div>
-						<button type="submit" name="enviar" value="Enviar" class="btn btn-primary">Guardar</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</main>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-		crossorigin="anonymous"></script>
-	<script src="js.js" th:src="@{/js.js}" defer></script>
-</body>
-
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale.language}">
+  <head
+    th:replace="fragments :: head(${form.id == null ? 'person.new' : 'person.edit'})"
+  ></head>
+  <body>
+    <div th:replace="fragments :: header"></div>
+    <main class="wrap" id="main" tabindex="-1">
+      <p class="eyebrow" th:text="#{app.demo}"></p>
+      <div class="page-heading">
+        <div>
+          <h1
+            th:text="${#messages.msg(form.id == null ? 'person.new' : 'person.edit')}"
+          ></h1>
+          <p th:text="#{form.intro}"></p>
+        </div>
+      </div>
+      <form
+        id="editor-form"
+        class="editor"
+        method="post"
+        novalidate
+        th:object="${form}"
+        th:action="${form.id == null ? '/addAlumno' : '/editarSubmit'}"
+      >
+        <input type="hidden" name="csrfToken" th:value="${session.formToken}" />
+        <input type="hidden" th:field="*{id}" />
+        <div th:replace="fragments :: errors"></div>
+        <section class="form-section">
+          <div>
+            <h2 th:text="#{form.personal}"></h2>
+            <p class="muted" th:text="#{form.personalHelp}"></p>
+          </div>
+          <div class="field-grid">
+            <div class="field">
+              <label for="name" th:text="#{field.name}"></label>
+              <input
+                id="name"
+                type="text"
+                th:field="*{name}"
+                required
+                aria-required="true"
+                th:attr="aria-invalid=${#fields.hasErrors('name')},aria-describedby='name-error'"
+              />
+              <p id="name-error" class="field-error" th:errors="*{name}"></p>
+            </div>
+            <div class="field">
+              <label for="firstSurname" th:text="#{field.firstSurname}"></label>
+              <input
+                id="firstSurname"
+                type="text"
+                th:field="*{firstSurname}"
+                required
+                aria-required="true"
+                th:attr="aria-invalid=${#fields.hasErrors('firstSurname')},aria-describedby='firstSurname-error'"
+              />
+              <p
+                id="firstSurname-error"
+                class="field-error"
+                th:errors="*{firstSurname}"
+              ></p>
+            </div>
+            <div class="field">
+              <label
+                for="secondSurname"
+                th:text="#{field.secondSurname}"
+              ></label>
+              <input
+                id="secondSurname"
+                type="text"
+                th:field="*{secondSurname}"
+                th:attr="aria-invalid=${#fields.hasErrors('secondSurname')},aria-describedby='secondSurname-error'"
+              />
+              <p
+                id="secondSurname-error"
+                class="field-error"
+                th:errors="*{secondSurname}"
+              ></p>
+            </div>
+            <div class="field">
+              <label for="birthDate" th:text="#{field.birthDate}"></label>
+              <input
+                id="birthDate"
+                type="date"
+                th:field="*{birthDate}"
+                th:attr="aria-invalid=${#fields.hasErrors('birthDate')},aria-describedby='birthDate-error'"
+              />
+              <p
+                id="birthDate-error"
+                class="field-error"
+                th:errors="*{birthDate}"
+              ></p>
+            </div>
+            <div class="field">
+              <label for="email" th:text="#{field.email}"></label>
+              <input
+                id="email"
+                type="email"
+                th:field="*{email}"
+                th:attr="aria-invalid=${#fields.hasErrors('email')},aria-describedby='email-error'"
+              />
+              <p id="email-error" class="field-error" th:errors="*{email}"></p>
+            </div>
+            <div class="field">
+              <label for="belt" th:text="#{label.belt}"></label>
+              <select
+                id="belt"
+                th:field="*{belt}"
+                th:attr="aria-invalid=${#fields.hasErrors('belt')},aria-describedby='belt-error'"
+              >
+                <option value="" th:text="#{value.notSet}"></option>
+                <option
+                  th:each="belt : ${beltOptions}"
+                  th:value="${belt}"
+                  th:text="${@dojoView.belt(belt,#locale)}"
+                ></option>
+              </select>
+              <p id="belt-error" class="field-error" th:errors="*{belt}"></p>
+            </div>
+          </div>
+        </section>
+        <section class="form-section">
+          <div>
+            <h2 th:text="#{form.enrollment}"></h2>
+            <p class="muted" th:text="#{form.enrollmentHelp}"></p>
+          </div>
+          <div class="field-grid">
+            <div class="field">
+              <label for="courseId" th:text="#{label.course}"></label>
+              <select
+                id="courseId"
+                th:field="*{courseId}"
+                th:attr="aria-invalid=${#fields.hasErrors('courseId')},aria-describedby='courseId-error'"
+              >
+                <option value="" th:text="#{value.noCourse}"></option>
+                <option
+                  th:each="course : ${cursos}"
+                  th:value="${course.id}"
+                  th:text="${course.nombre}"
+                ></option>
+              </select>
+              <p
+                id="courseId-error"
+                class="field-error"
+                th:errors="*{courseId}"
+              ></p>
+            </div>
+            <div class="field">
+              <label
+                for="enrollmentDate"
+                th:text="#{field.enrollmentDate}"
+              ></label>
+              <input
+                id="enrollmentDate"
+                type="date"
+                th:field="*{enrollmentDate}"
+                th:attr="aria-invalid=${#fields.hasErrors('enrollmentDate')},aria-describedby='enrollmentDate-error'"
+              />
+              <p
+                id="enrollmentDate-error"
+                class="field-error"
+                th:errors="*{enrollmentDate}"
+              ></p>
+            </div>
+            <div class="field">
+              <label for="federation" th:text="#{field.federation}"></label>
+              <select
+                id="federation"
+                th:field="*{federation}"
+                th:attr="aria-invalid=${#fields.hasErrors('federation')},aria-describedby='federation-error'"
+              >
+                <option value="No" th:text="#{form.no}"></option>
+                <option value="Si" th:text="#{form.yes}"></option>
+              </select>
+              <p
+                id="federation-error"
+                class="field-error"
+                th:errors="*{federation}"
+              ></p>
+            </div>
+            <div class="field full">
+              <label for="notes" th:text="#{field.notes}"></label>
+              <textarea
+                id="notes"
+                th:field="*{notes}"
+                rows="3"
+                maxlength="2000"
+                aria-describedby="notes-error"
+              ></textarea>
+              <p id="notes-error" class="field-error" th:errors="*{notes}"></p>
+            </div>
+          </div>
+        </section>
+        <details
+          class="contact-details"
+          th:open="${#fields.hasErrors('postalCode') or #fields.hasErrors('phone') or #fields.hasErrors('address') or #fields.hasErrors('province') or #fields.hasErrors('city') or #fields.hasErrors('documentNumber') or #fields.hasErrors('imageUrl')}"
+        >
+          <summary th:text="#{form.contact}"></summary>
+          <p class="muted" th:text="#{form.contactHelp}"></p>
+          <div class="field-grid">
+            <div class="field">
+              <label for="phone" th:text="#{field.phone}"></label>
+              <input
+                id="phone"
+                type="text"
+                th:field="*{phone}"
+                th:attr="aria-invalid=${#fields.hasErrors('phone')},aria-describedby='phone-error'"
+              />
+              <p id="phone-error" class="field-error" th:errors="*{phone}"></p>
+            </div>
+            <div class="field">
+              <label
+                for="documentNumber"
+                th:text="#{field.documentNumber}"
+              ></label>
+              <input
+                id="documentNumber"
+                type="text"
+                th:field="*{documentNumber}"
+                th:attr="aria-invalid=${#fields.hasErrors('documentNumber')},aria-describedby='documentNumber-error'"
+              />
+              <p
+                id="documentNumber-error"
+                class="field-error"
+                th:errors="*{documentNumber}"
+              ></p>
+            </div>
+            <div class="field">
+              <label for="province" th:text="#{field.province}"></label>
+              <input
+                id="province"
+                type="text"
+                th:field="*{province}"
+                th:attr="aria-invalid=${#fields.hasErrors('province')},aria-describedby='province-error'"
+              />
+              <p
+                id="province-error"
+                class="field-error"
+                th:errors="*{province}"
+              ></p>
+            </div>
+            <div class="field">
+              <label for="postalCode" th:text="#{field.postalCode}"></label>
+              <input
+                id="postalCode"
+                type="text"
+                th:field="*{postalCode}"
+                th:attr="aria-invalid=${#fields.hasErrors('postalCode')},aria-describedby='postalCode-error'"
+              />
+              <p
+                id="postalCode-error"
+                class="field-error"
+                th:errors="*{postalCode}"
+              ></p>
+            </div>
+            <div class="field">
+              <label for="city" th:text="#{field.city}"></label>
+              <input
+                id="city"
+                type="text"
+                th:field="*{city}"
+                th:attr="aria-invalid=${#fields.hasErrors('city')},aria-describedby='city-error'"
+              />
+              <p id="city-error" class="field-error" th:errors="*{city}"></p>
+            </div>
+            <div class="field">
+              <label for="address" th:text="#{field.address}"></label>
+              <input
+                id="address"
+                type="text"
+                th:field="*{address}"
+                th:attr="aria-invalid=${#fields.hasErrors('address')},aria-describedby='address-error'"
+              />
+              <p
+                id="address-error"
+                class="field-error"
+                th:errors="*{address}"
+              ></p>
+            </div>
+            <div class="field">
+              <label for="imageUrl" th:text="#{field.imageUrl}"></label>
+              <input
+                id="imageUrl"
+                type="url"
+                th:field="*{imageUrl}"
+                th:attr="aria-invalid=${#fields.hasErrors('imageUrl')},aria-describedby='imageUrl-error'"
+              />
+              <p
+                id="imageUrl-error"
+                class="field-error"
+                th:errors="*{imageUrl}"
+              ></p>
+            </div>
+          </div>
+        </details>
+        <div class="form-actions">
+          <button type="submit" th:text="#{action.saveStudent}"></button>
+          <a th:href="@{/}" th:text="#{action.cancel}"></a>
+        </div>
+      </form>
+    </main>
+    <footer th:replace="fragments :: footer"></footer>
+  </body>
 </html>

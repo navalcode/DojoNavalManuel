@@ -1,0 +1,208 @@
+{
+  "kind": "recorded_local_result",
+  "checked_on": "2026-10-29",
+  "platform": "macOS",
+  "jdk": {
+    "version": "17.0.14",
+    "vendor": "Amazon.com Inc."
+  },
+  "pom_java_target": 11,
+  "observed_class_file_major": 55,
+  "source_baseline": "db95ccc35146e267933a94cc77675bdda42b388e",
+  "test_total": 28,
+  "junit": {
+    "tests": 28,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "command": "sh ./mvnw verify",
+  "log_sha256": "76120a2fc50828b4de5904007d7acdf2fb48bfdb90ec685d218a9d9cdad64662",
+  "junit_xml_sha256": [
+    "010027627529347e399dcca1c187d9abd94657b809bcfb2475ecb03624f77a24",
+    "004b752c325cfd8a24268833950bd9a528c3574d9053dea89fae4fa2c8dbd154",
+    "2aa014ded35205a5047dc47ef835fea80f2f5e9b1f33bc5a8155c5c6374de76d"
+  ],
+  "packaged_runtime": {
+    "artifact_sha256": "97f9e2c6b75d2e4df4767af449cab1cb3c072def2a9475e486331c64c9cf6758",
+    "requests": [
+      {
+        "path": "/?lang=es",
+        "status": 200
+      },
+      {
+        "path": "/cursos?lang=es",
+        "status": 200
+      },
+      {
+        "path": "/senseis?lang=es",
+        "status": 200
+      },
+      {
+        "path": "/nuevo?lang=es",
+        "status": 200
+      },
+      {
+        "path": "/nuevoCurso?lang=es",
+        "status": 200
+      },
+      {
+        "path": "/nuevoSensei?lang=es",
+        "status": 200
+      },
+      {
+        "path": "/ordenarEdad?lang=es",
+        "status": 200
+      },
+      {
+        "path": "/ordenarAlfabeticamente?lang=es",
+        "status": 200
+      },
+      {
+        "path": "/?lang=en",
+        "status": 200
+      },
+      {
+        "path": "/cursos?lang=en",
+        "status": 200
+      },
+      {
+        "path": "/senseis?lang=en",
+        "status": 200
+      },
+      {
+        "path": "/nuevo?lang=en",
+        "status": 200
+      },
+      {
+        "path": "/nuevoCurso?lang=en",
+        "status": 200
+      },
+      {
+        "path": "/nuevoSensei?lang=en",
+        "status": 200
+      },
+      {
+        "path": "/ordenarEdad?lang=en",
+        "status": 200
+      },
+      {
+        "path": "/ordenarAlfabeticamente?lang=en",
+        "status": 200
+      },
+      {
+        "path": "/?lang=es",
+        "status": 200
+      },
+      {
+        "path": "/detalleAlumnos/7",
+        "status": 200
+      },
+      {
+        "path": "/borrarAlumno/7",
+        "status": 200
+      },
+      {
+        "path": "/",
+        "status": 200
+      },
+      {
+        "path": "/detalleAlumnos/9223372036854775807",
+        "status": 404
+      },
+      {
+        "path": "/dojo.css",
+        "status": 200
+      },
+      {
+        "path": "/dojo.js",
+        "status": 200
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200
+      },
+      {
+        "path": "/fonts/Outfit.woff2",
+        "status": 200
+      },
+      {
+        "path": "/fonts/OFL.txt",
+        "status": 200
+      },
+      {
+        "path": "/addAlumno",
+        "status": 403
+      }
+    ],
+    "served_asset_bytes_match_reviewed_source": 5,
+    "packaged_templates_resources_match_reviewed_source": true,
+    "html_languages": [
+      "es",
+      "en"
+    ],
+    "seed_student_rows": 6,
+    "get_delete_confirmation_preserves_rows": true,
+    "csrf_rejection_uses_styled_error": true,
+    "scope": "Actual packaged JAR on loopback; no form token/session ID or private path is recorded."
+  },
+  "file_persistence": {
+    "artifact_sha256": "97f9e2c6b75d2e4df4767af449cab1cb3c072def2a9475e486331c64c9cf6758",
+    "mode": "Explicit H2 file URL in a newly created ignored test directory; not the original application/user database",
+    "starts": [
+      {
+        "start": 1,
+        "student_rows": 7,
+        "fictional_added_record_present": true,
+        "original_seed_not_duplicated": true
+      },
+      {
+        "start": 2,
+        "student_rows": 7,
+        "fictional_added_record_present": true,
+        "original_seed_not_duplicated": true
+      }
+    ],
+    "processes_stopped": true,
+    "scope": "Packaged JAR create, stop and restart; no simulator/device or deployment claim. HTTP form token/cookie values are not included."
+  },
+  "browser": {
+    "viewports": [
+      "1366x768",
+      "360x800",
+      "800x360"
+    ],
+    "languages": [
+      "es",
+      "en"
+    ],
+    "document_overflow_observed": false,
+    "script_console_warnings_errors_observed": [],
+    "core_paths": "keyboard skip, create/reload/detail/edit, retained validation, draft language switch, combined filter/order, confirmation/cancel, stale-session recovery",
+    "scope": "Real local browser; no physical device, screen reader or formal WCAG audit."
+  },
+  "screenshots": [
+    {
+      "path": "docs/images/form-en-error.png",
+      "sha256": "f142a83e9e4b8e44883f9aa6ca6ad7752b1c61856f1ffc026f21069684cc1cee",
+      "source": "Real local application, fictional data; not generated concepts"
+    },
+    {
+      "path": "docs/images/form-es-mobile-error.png",
+      "sha256": "f3940e66f215d984380e0921c67561b1422bc9463128eb81f07bf2b97721b415",
+      "source": "Real local application, fictional data; not generated concepts"
+    },
+    {
+      "path": "docs/images/students-en-desktop.png",
+      "sha256": "02b537ef75f49af4863e5ddbc29ef0e73a5492969b322942644f43bd6e051066",
+      "source": "Real local application, fictional data; not generated concepts"
+    },
+    {
+      "path": "docs/images/students-es-mobile.png",
+      "sha256": "cf34bd8511385e1330612650a15c450e317af0433b9c21873823fabcad8da663",
+      "source": "Real local application, fictional data; not generated concepts"
+    }
+  ],
+  "hosted_ci_run": null,
+  "scope": "Local tests/package and real loopback runtime. Original Maven/Spring pins retained. Java 11 target is not a Java 11 runtime result. No authenticated production deployment is claimed."
+}

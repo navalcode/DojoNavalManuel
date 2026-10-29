@@ -1,140 +1,104 @@
 package com.salesianostriana.dam.controladores;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.salesianostriana.dam.web.*;
+import javax.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.salesianostriana.dam.modelo.Curso;
-import com.salesianostriana.dam.servicios.AlumnoServicio;
-import com.salesianostriana.dam.servicios.CursoServicio;
-import com.salesianostriana.dam.servicios.SenseiServicio;
-
-import lombok.RequiredArgsConstructor;
-
-/**
- * Este método controla las vistas relacionadas con los cursos.
- * 
- * @author naval
- *
- */
+/** Original coursework by Manuel Naval; reviewed navigation and explicit form contracts. */
 @Controller
 @RequiredArgsConstructor
 public class CursoController {
+  private final DojoService service;
 
-	@Autowired
-	private CursoServicio servicio;
+  @GetMapping("/cursos")
+  public String list(Model model) {
+    model.addAttribute("cursos", service.courses());
+    return "cursos";
+  }
 
-	@Autowired
-	private SenseiServicio senseiServicio;
+  @GetMapping("/nuevoCurso")
+  public String create(Model model) {
+    return show(new CourseForm(), model);
+  }
 
-	@Autowired
-	private AlumnoServicio alumnoServicio;
+  @GetMapping("/editarCurso/{id}")
+  public String edit(@PathVariable long id, Model model) {
+    return show(service.courseForm(service.course(id)), model);
+  }
 
-	/**
-	 * Este método permite visualizar todos los cursos existentes
-	 * 
-	 * @param model
-	 * @return
-	 */
-	@GetMapping("/cursos")
-	public String todosLosCursos(Model model) {
-		model.addAttribute("cursos", servicio.findAll());
-		model.addAttribute("senseis", senseiServicio.findAll());
-		model.addAttribute("alumnos", alumnoServicio.findAll());
-		return "cursos";
-	}
+  private String show(CourseForm form, Model model) {
+    model.addAttribute("editorPage", true);
+    model.addAttribute("form", form);
+    model.addAttribute("senseis", service.instructors());
+    return "agregarCurso";
+  }
 
-	/**
-	 * Este método nos redirige a un formulario para crear un nuevo curso.
-	 * 
-	 * @param model
-	 * @return
-	 */
-	@GetMapping("/nuevoCurso")
-	public String formularioCurso(Model model) {
-		model.addAttribute("curso", new Curso());
-		model.addAttribute("senseis", senseiServicio.findAll());
-		return "agregarCurso";
-	}
+  @PostMapping("/addCurso")
+  public String create(
+      @ModelAttribute("form") CourseForm form,
+      BindingResult errors,
+      Model model,
+      HttpServletResponse response,
+      RedirectAttributes redirect,
+      @RequestParam(required = false) String lang) {
+    return save(form, errors, model, response, redirect, true, lang);
+  }
 
-	/**
-	 * Este método guarda en la base de datos un curso con los datos proporcionados
-	 * en el formulario
-	 * 
-	 * @param curso
-	 * @param model
-	 * @return
-	 */
-	@PostMapping("/addCurso")
-	public String submitCurso(@ModelAttribute("curso") Curso curso, Model model) {
-		servicio.save(curso);
-		return "redirect:/cursos";
-	}
+  @PostMapping("/editarCursoSubmit")
+  public String edit(
+      @ModelAttribute("form") CourseForm form,
+      BindingResult errors,
+      Model model,
+      HttpServletResponse response,
+      RedirectAttributes redirect,
+      @RequestParam(required = false) String lang) {
+    return save(form, errors, model, response, redirect, false, lang);
+  }
 
-	/**
-	 * Este método nos redirige a un formulario proporcionando el id de un curso, de
-	 * forma que dicho formulario se rellene total o parcialmente con los datos del
-	 * curso con dicho id.
-	 * 
-	 * @param id
-	 * @param model
-	 * @return
-	 */
-	@GetMapping("/editarCurso/{id}")
-	public String editarCurso(@PathVariable("id") Long id, Model model) {
+  private String save(
+      CourseForm form,
+      BindingResult errors,
+      Model model,
+      HttpServletResponse response,
+      RedirectAttributes redirect,
+      boolean create,
+      String lang) {
+    if ("es".equals(lang) || "en".equals(lang)) return show(form, model);
+    service.validate(form, errors, create);
+    if (errors.hasErrors()) {
+      response.setStatus(400);
+      return show(form, model);
+    }
+    service.saveCourse(form, create);
+    redirect.addFlashAttribute("notice", "notice.saved");
+    return "redirect:/cursos";
+  }
 
-		Curso curso = servicio.findById(id);
+  @GetMapping("/borrarCurso/{id}")
+  public String confirm(@PathVariable long id, Model model) {
+    model.addAttribute("record", service.course(id));
+    model.addAttribute("deletePath", "/borrarCurso/" + id);
+    model.addAttribute("backPath", "/cursos");
+    return "confirm";
+  }
 
-		if (curso != null) {
-			model.addAttribute("curso", curso);
-			model.addAttribute("senseis", senseiServicio.findAll());
-			return "agregarCurso";
-		} else {
-			return "redirect:/";
-		}
-
-	}
-
-	/**
-	 * Este método se encarga de cuardar los cambios realizados sobre un formualrio
-	 * de edición correspondiente a un curso.
-	 * 
-	 * @param c
-	 * @return
-	 */
-	@PostMapping("/editarCursoSubmit")
-	public String guardarEdicionCurso(@ModelAttribute("curso") Curso c) {
-		servicio.edit(c);
-		return "redirect:/cursos";
-	}
-
-	/**
-	 * Este método comprueba si un curso con un determinado id es nulo y si está
-	 * vacío, si es así lo borra, en caso contrario muestra una vista de error
-	 * advirtiendo de que el curso contiene alumnos, y primero debemos eliminarlos.
-	 * 
-	 * @param id
-	 * @param model
-	 * @return
-	 */
-	@GetMapping("/borrarCurso/{id}")
-	public String borrarCurso(@PathVariable("id") Long id, Model model) {
-
-		String direccion = "redirect:/cursos";
-
-		Curso curso = servicio.findById(id);
-
-		if (curso != null && curso.getAlumnos().isEmpty()) {
-			servicio.delete(curso);
-
-		} else {
-			direccion = "errorReferencialAlumnos";
-		}
-		return direccion;
-	}
-
+  @PostMapping("/borrarCurso/{id}")
+  public String delete(
+      @PathVariable long id,
+      Model model,
+      HttpServletResponse response,
+      RedirectAttributes redirect) {
+    if (!service.deleteCourse(id)) {
+      response.setStatus(409);
+      model.addAttribute("problemKey", "problem.courseUsed");
+      return "problem";
+    }
+    redirect.addFlashAttribute("notice", "notice.deleted");
+    return "redirect:/cursos";
+  }
 }

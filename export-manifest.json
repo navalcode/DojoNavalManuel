@@ -1,0 +1,194 @@
+[
+  {
+    "path": ".gitignore",
+    "sha256": "3286f928da81389a32067a58835b8ce6b955d75104da61b62c5e6854d95c7d7f"
+  },
+  {
+    "path": "DESIGN.md",
+    "sha256": "52116b28a4180e0f57ba577d94ce9ecc55bb4d382e8cfd948961485f93e7fa74"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/java/com/salesianostriana/dam/controladores/AlumnoController.java",
+    "sha256": "c054282d75850a21fd75bd87f0516380a47dde08bfa0ae2834c3e16e182fea3c"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/java/com/salesianostriana/dam/controladores/CursoController.java",
+    "sha256": "9feb9ed50fc5a273830c5b68c49646a846a09009116a4d91c5a2f1f343d5472d"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/java/com/salesianostriana/dam/controladores/MainController.java",
+    "sha256": "751c6e0ff4733757917d9541577bab412547433f99695a921b344d2484e237fc"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/java/com/salesianostriana/dam/controladores/SenseiController.java",
+    "sha256": "12d6e5acae12d354d5ac59eaa3496d69aa7cd079191fe13da00acd72e3314756"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/java/com/salesianostriana/dam/initData.java",
+    "sha256": "63d6dec02a3f7cabfbd61270f41821e8c41dee50b8d0f0307b7b047671ad0e7a"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/java/com/salesianostriana/dam/modelo/Curso.java",
+    "sha256": "61878b6d2b0dde777117e771c2b4652a0eec06e997beae176ee195bc91cfd889"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/java/com/salesianostriana/dam/modelo/Sensei.java",
+    "sha256": "59a3d82925ebf6c83a621148e729ed2c59b17ba0b9e5e24bbde90a447bc5d939"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/java/com/salesianostriana/dam/web/CourseForm.java",
+    "sha256": "34552d6f5cb81c4d75f0a2be5eeb1904bfccd70b5d5a85b7a68a7ca0d45a1b2d"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/java/com/salesianostriana/dam/web/DojoModelAdvice.java",
+    "sha256": "3cbf27463a5f13fb774f27c69f5624022e7f11306ee43cd00811faff39fbae2b"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/java/com/salesianostriana/dam/web/DojoService.java",
+    "sha256": "049dc32bf3c6636808c770e9ee99f24ea9221dc5823d413c531da3053516aebd"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/java/com/salesianostriana/dam/web/DojoView.java",
+    "sha256": "681494ad79d5fa38c84acc947eaa4caddffadb55c87fbde30c2b8e989130f438"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/java/com/salesianostriana/dam/web/DojoWebConfig.java",
+    "sha256": "0f3af507a693d8b1189895166a47b816d5ba189877e4a519547dfec38ab00e8e"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/java/com/salesianostriana/dam/web/PersonForm.java",
+    "sha256": "5b8399e1d2ba42715b9a2b17627aafced436fb9ce42d1596105487a6e3a17b06"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/resources/application.properties",
+    "sha256": "6163623fa319bf53075662215e631335198de669ab6f34c215da7bbd4cbdd7bf"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/resources/messages.properties",
+    "sha256": "4c665849689da253c544e589049a2e71c2d34ec8e5ff92ce3951ed318064423b"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/resources/messages_es.properties",
+    "sha256": "89bc95cbaeab39faeddf32cc87a153c42046b66fc97be122e625d9c17dd8b4d4"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/resources/static/dojo.css",
+    "sha256": "3c34955f0e1b0ae8a8a3b4ca12b4fad97a77f1f1679fbdeabf86ddf6c1d78c53"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/resources/static/dojo.js",
+    "sha256": "4e07ab27582459fbe06010a1014003f224ba579e67d7aa43dd5f96024b8524f4"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/resources/static/favicon.svg",
+    "sha256": "20880f4062e1bf4e4f3e09c80f7832f106716f0cab0ac97c113d6766bc980bfd"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/resources/static/fonts/OFL.txt",
+    "sha256": "c676351bf8576b9aba743cd5eaa8c0e7ee0d51f805d720447b4df4ddb6a2e416"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/resources/static/fonts/Outfit.woff2",
+    "sha256": "ed629d88c2db8ace1b3ac85fbf1fe0223d7272defaa817d1955100101966f0fb"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/resources/templates/AlumnosOrdenadosEdad.html",
+    "sha256": "58951ecbcb2cb843349d72183f38110baffb4bdde2ecb5008d4ac29754330f2d"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/resources/templates/agregar.html",
+    "sha256": "e1da497d89e30226f5aee77bfa2de296323b8322d21fb9aaeb03664dce6ff3db"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/resources/templates/agregarCurso.html",
+    "sha256": "822399ed897337fb9004780e586b5fb8ec2aaa454ce678758cf19eb934be14b9"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/resources/templates/agregarSensei.html",
+    "sha256": "afed4640488022e1a8b4467eb7b9bb3992b4fcaf15ed85d8e09ac5288d43b933"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/resources/templates/alumnosOrdenados.html",
+    "sha256": "58951ecbcb2cb843349d72183f38110baffb4bdde2ecb5008d4ac29754330f2d"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/resources/templates/confirm.html",
+    "sha256": "1ba50da21f29d58795fae2d3513237e27f3b2c0a3e850ad9c88b16f065a775a2"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/resources/templates/cursos.html",
+    "sha256": "4e8155ab88f785beb7aa50452856c7814dbb8c9405fe4fe8f761d8184fe75962"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/resources/templates/detalleAlumno.html",
+    "sha256": "a6fff1fdcaf6a84dc7215859b07b78f42ff65c8b4c564f7cd3fb1249a5360948"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/resources/templates/error.html",
+    "sha256": "a97abd4eb2d5eedafa671b44b0ceb2c9a3f0573430b2d66b8ac04e333481a58a"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/resources/templates/errorReferencialAlumnos.html",
+    "sha256": "58951ecbcb2cb843349d72183f38110baffb4bdde2ecb5008d4ac29754330f2d"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/resources/templates/errorReferencialSenseis.html",
+    "sha256": "58951ecbcb2cb843349d72183f38110baffb4bdde2ecb5008d4ac29754330f2d"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/resources/templates/fragments.html",
+    "sha256": "08a64d2d27d1626c5386808618de794ead8f49bf903b92838284b6037b00dd5e"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/resources/templates/index.html",
+    "sha256": "0c918abdab085f51afc8f106262824215ec4d4824208035e338bb285ff2ccd69"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/resources/templates/problem.html",
+    "sha256": "44553db49f42174b89799af367c8fffca91fc422dbb9711fd84c4dfb20b1ac49"
+  },
+  {
+    "path": "DojoNavalManuel/src/main/resources/templates/senseis.html",
+    "sha256": "6ab9b723abe11f8de1dfec74250f1ee4c85ebe64806ba15c71346dd9801d98d2"
+  },
+  {
+    "path": "DojoNavalManuel/src/test/java/com/salesianostriana/dam/DojoGraphContractTest.java",
+    "sha256": "243a2d71594b4b5c1918d3131c230e86f50367034228138ef67d292168cee953"
+  },
+  {
+    "path": "DojoNavalManuel/src/test/java/com/salesianostriana/dam/DojoHttpJourneyTest.java",
+    "sha256": "173c090f5a070ca3d587d8df179888a6a5e2951ae1e4b23102a212f235f14914"
+  },
+  {
+    "path": "README.es.md",
+    "sha256": "7db992d382f85e1f9c2de721e9da475f40625af327e184953c13aa6e0d5d68d1"
+  },
+  {
+    "path": "README.md",
+    "sha256": "5170863048292febdad6e1d85c12ebb0e1fb655f2251604c19657d34c6c4516b"
+  },
+  {
+    "path": "THIRD_PARTY.md",
+    "sha256": "0e4a50095d4c28e963b42bc09790f2e8b330a55d7bbb0e50e85ed3fef52b586d"
+  },
+  {
+    "path": "docs/images/form-en-error.png",
+    "sha256": "f142a83e9e4b8e44883f9aa6ca6ad7752b1c61856f1ffc026f21069684cc1cee"
+  },
+  {
+    "path": "docs/images/form-es-mobile-error.png",
+    "sha256": "f3940e66f215d984380e0921c67561b1422bc9463128eb81f07bf2b97721b415"
+  },
+  {
+    "path": "docs/images/students-en-desktop.png",
+    "sha256": "02b537ef75f49af4863e5ddbc29ef0e73a5492969b322942644f43bd6e051066"
+  },
+  {
+    "path": "docs/images/students-es-mobile.png",
+    "sha256": "cf34bd8511385e1330612650a15c450e317af0433b9c21873823fabcad8da663"
+  },
+  {
+    "path": "docs/verification.json",
+    "sha256": "d01d30202f5758dd09d6ddb3d745bfa414a417773b5c3c5aeb2bf5f75bbeba95"
+  }
+]

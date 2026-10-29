@@ -1,224 +1,105 @@
 package com.salesianostriana.dam.controladores;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import com.salesianostriana.dam.web.*;
+import javax.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.salesianostriana.dam.modelo.Alumno;
-import com.salesianostriana.dam.modelo.Curso;
-import com.salesianostriana.dam.modelo.DatosCinturones;
-import com.salesianostriana.dam.modelo.DatosFederados;
-import com.salesianostriana.dam.modelo.DatosProvincias;
-import com.salesianostriana.dam.servicios.AlumnoServicio;
-import com.salesianostriana.dam.servicios.CursoServicio;
-
-import lombok.RequiredArgsConstructor;
-
-/**
- * Esta clase se encarga de controlar las vistas para los alumnos
- * 
- * @author Manuel Naval
- *
- */
+/** Original coursework by Manuel Naval; reviewed navigation and explicit form contracts. */
 @Controller
 @RequiredArgsConstructor
 public class AlumnoController {
+  private final DojoService service;
 
-	@Autowired
-	private AlumnoServicio servicio;
+  @GetMapping("/nuevo")
+  public String create(Model model) {
+    return show(new PersonForm(), model);
+  }
 
-	@Autowired
-	private CursoServicio cursoServicio;
+  @GetMapping("/editarAlumno/{id}")
+  public String edit(@PathVariable long id, Model model) {
+    return show(service.personForm(service.student(id)), model);
+  }
 
-	/**
-	 * Este método redirige a la vista detalleAlumnos o a la pagina principal en
-	 * caso de que el alumno sea nulo.
-	 * 
-	 * @param id
-	 * @param model
-	 * @return
-	 */
-	@GetMapping("/detalleAlumnos/{id}")
-	public String verAlumno(@PathVariable("id") Long id, Model model) {
+  private String show(PersonForm form, Model model) {
+    model.addAttribute("editorPage", true);
+    model.addAttribute("form", form);
+    model.addAttribute("staff", false);
+    model.addAttribute("cursos", service.courses());
+    return "agregar";
+  }
 
-		Alumno alumno = servicio.findById(id);
+  @PostMapping("/addAlumno")
+  public String create(
+      @ModelAttribute("form") PersonForm form,
+      BindingResult errors,
+      Model model,
+      HttpServletResponse response,
+      RedirectAttributes redirect,
+      @RequestParam(required = false) String lang) {
+    return save(form, errors, model, response, redirect, true, lang);
+  }
 
-		if (alumno != null) {
-			model.addAttribute("alumno", alumno);
-			model.addAttribute("cursos", cursoServicio.findAll());
-			return "detalleAlumno";
-		} else {
-			return "redirect:/";
-		}
+  @PostMapping("/editarSubmit")
+  public String edit(
+      @ModelAttribute("form") PersonForm form,
+      BindingResult errors,
+      Model model,
+      HttpServletResponse response,
+      RedirectAttributes redirect,
+      @RequestParam(required = false) String lang) {
+    return save(form, errors, model, response, redirect, false, lang);
+  }
 
-	}
+  private String save(
+      PersonForm form,
+      BindingResult errors,
+      Model model,
+      HttpServletResponse response,
+      RedirectAttributes redirect,
+      boolean create,
+      String lang) {
+    if ("es".equals(lang) || "en".equals(lang)) return show(form, model);
+    service.validate(form, errors, false, create);
+    if (errors.hasErrors()) {
+      response.setStatus(400);
+      return show(form, model);
+    }
+    service.saveStudent(form, create);
+    redirect.addFlashAttribute("notice", "notice.saved");
+    return "redirect:/";
+  }
 
-	/**
-	 * Este método nos redirige a la pagina para crear un nuevo alumno
-	 * 
-	 * @param model
-	 * @return agregar.html
-	 */
-	@GetMapping("/nuevo")
-	public String formularioAlumno(Model model) {
-		model.addAttribute("alumno", new Alumno());
-		return "agregar";
-	}
+  @GetMapping("/borrarAlumno/{id}")
+  public String confirm(@PathVariable long id, Model model) {
+    model.addAttribute("record", service.student(id));
+    model.addAttribute("deletePath", "/borrarAlumno/" + id);
+    model.addAttribute("backPath", "/");
+    return "confirm";
+  }
 
-	/**
-	 * Este método guarda el nuevo alumno y posteriormente nos redirige a la página
-	 * principal.
-	 * 
-	 * @param alumno: El alumno que tomará del formulario.
-	 * @param model
-	 * @return redirect:/
-	 */
-	@PostMapping("/addAlumno")
-	public String submit(@ModelAttribute("alumno") Alumno alumno, Model model) {
+  @PostMapping("/borrarAlumno/{id}")
+  public String delete(
+      @PathVariable long id,
+      Model model,
+      HttpServletResponse response,
+      RedirectAttributes redirect) {
+    if (!service.deleteStudent(id)) {
+      response.setStatus(409);
+      model.addAttribute("problemKey", "problem.invalid");
+      return "problem";
+    }
+    redirect.addFlashAttribute("notice", "notice.deleted");
+    return "redirect:/";
+  }
 
-		servicio.save(alumno);
-		return "redirect:/";
-	}
-
-	/**
-	 * Este método permite editar un nuevo alumno, redirigiendonos a la pagina
-	 * agregar con un alumno seleccionado por id.
-	 * 
-	 * @param id
-	 * @param model
-	 * @return
-	 */
-	@GetMapping("/editarAlumno/{id}")
-	public String editarAlumno(@PathVariable("id") Long id, Model model) {
-
-		Alumno alumno = servicio.findById(id);
-
-		if (alumno != null) {
-			model.addAttribute("alumno", alumno);
-			model.addAttribute("cursos", cursoServicio.findAll());
-			return "agregar";
-		} else {
-			return "redirect:/";
-		}
-
-	}
-
-	/**
-	 * Este método edita el alumno con los nuevos datos tomados del formulario.
-	 * 
-	 * @param a
-	 * @return
-	 */
-	@PostMapping("/editarSubmit")
-	public String guardarEdicionAlumno(@ModelAttribute("alumno") Alumno a) {
-		servicio.edit(a);
-		return "redirect:/";
-	}
-
-	/**
-	 * Este método borra un alumno dado su id.
-	 * 
-	 * @param id
-	 * @param model
-	 * @return
-	 */
-
-	@GetMapping("/borrarAlumno/{id}")
-	public String borrarAlumno(@PathVariable("id") Long id, Model model) {
-
-		Alumno alumno = servicio.findById(id);
-
-		if (alumno != null) {
-			servicio.delete(alumno);
-		}
-
-		return "redirect:/";
-
-	}
-
-	/**
-	 * Este método muestra los alumnos ordenados alfabéticamente mediante una
-	 * consulta a la base de datos.
-	 * 
-	 * @param model
-	 * @return
-	 */
-	@GetMapping("/ordenarAlfabeticamente")
-	public String alumnosAlfabeticamente(Model model) {
-		model.addAttribute("cursos", cursoServicio.findAll());
-		List<Alumno> alumnos;
-		alumnos = servicio.findAllSorted();
-		model.addAttribute("alumnos", alumnos);
-
-		return "alumnosOrdenados";
-	}
-
-	/**
-	 * Este método muestra los alumnos ordenados por edad ascendente mediante una
-	 * consulta a la base de datos.
-	 * 
-	 * @param model
-	 * @return
-	 */
-	@GetMapping("ordenarEdad")
-	public String alumnosEdad(Model model) {
-		model.addAttribute("cursos", cursoServicio.findAll());
-		List<Alumno> alumnos;
-		alumnos = servicio.findAllSortedEdad();
-		model.addAttribute("alumnos", alumnos);
-		return "alumnosOrdenadosEdad";
-	}
-
-	/**
-	 * Este método permite acceder a los cursos existentes en la base de datos.
-	 * 
-	 * @return
-	 */
-	@ModelAttribute("lista_cursos")
-	public List<Curso> cursos() {
-		return cursoServicio.findAll();
-	}
-
-	/**
-	 * Este método permite acceder a una lista de tipos de cinturones existentes en
-	 * la clase DatosCinturones, estos datos no pertenencen a una entidad , es una
-	 * lista constante.
-	 * 
-	 * @return
-	 */
-	@ModelAttribute("lista_cinturones")
-	public List<String> tiposCinturones() {
-		return DatosCinturones.lista_cinturones();
-	}
-
-	/**
-	 * Este método permite acceder a una lista de tipos de provincias existentes en
-	 * la clase DatosProvincias, estos datos no pertenencen a una entidad , es una
-	 * lista constante.
-	 * 
-	 * @return
-	 */
-	@ModelAttribute("lista_provincias")
-	public List<String> tiposProvincias() {
-		return DatosProvincias.lista_provincias();
-	}
-
-	/**
-	 * Este método permite acceder a una lista de tipos de federaciones existentes
-	 * en la clase DatosFederados, estos datos no pertenencen a una entidad , es una
-	 * lista constante.
-	 * 
-	 * @return
-	 */
-	@ModelAttribute("lista_federados")
-	public List<String> tiposFederados() {
-		return DatosFederados.lista_federados();
-	}
-
+  @GetMapping("/detalleAlumnos/{id}")
+  public String detail(@PathVariable long id, Model model) {
+    model.addAttribute("alumno", service.student(id));
+    return "detalleAlumno";
+  }
 }
